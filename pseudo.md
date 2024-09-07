@@ -37,6 +37,7 @@
     - [X] commit 3 (created all pages)
     - [X] commit 4 (completed index page)
     - [X] commit 5 (added loser popup)
+    - [X] commit 6 (added a timer)
 
 - [ ] **Code indented, spaced, and within code blocks**
 

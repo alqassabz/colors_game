@@ -82,6 +82,7 @@ const colorChange = () => {
   if (game === games) {
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
+    clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
         console.log("Did it")
@@ -97,7 +98,6 @@ const colorChange = () => {
 
 };
 
-
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
@@ -108,6 +108,7 @@ const colorChange = () => {
       else{
       lose.style.opacity = 1;
       lose.style.pointerEvents = "all";
+      clearInterval(timerStart)
       }
     })
   })
@@ -117,12 +118,18 @@ const colorChange = () => {
 // Start button click event
 button.addEventListener("click", colorChange);
 
+
+
+
 start.addEventListener("click", ()=>{
-  setInterval(()=>{
+ timerStart = setInterval(()=>{
     time ++
     timer.innerText = time.toString()
   }, 1000)
+  
+  
 })
+
 
 
 
