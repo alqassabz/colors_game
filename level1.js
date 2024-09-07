@@ -1,11 +1,12 @@
 const cont = document.querySelector(".cont");
 
-blocks = 20;
+blocks = 16
+let complete1 = false
 let random = Math.floor(Math.random() * blocks);
 
 for (let i = 1; i <= blocks; i++) {
-  if (blocks === 20) {
-    cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+  if (blocks === 16 || blocks === 12 ) {
+    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
   }
   const div = document.createElement("div");
   div.classList.add("slots");
@@ -19,10 +20,11 @@ let button = document.querySelector(".startbtn");
 const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let start = document.querySelector(".start");
-let count = 100;
+let count = 201;
 let game = 0;
-let games = 9;
+let games = 20;
 let diff = null;
+const l2 = document.querySelector(".l2")
 
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
@@ -66,7 +68,7 @@ const colorChange = () => {
     diff.addEventListener("click", colorChange);
   }
 
-  // Check if the game has reached its end or if count has gone too low
+  // Check if the game has reached its end 
   if (count <= 0) {
     console.log("We reached zero");
     return
@@ -77,12 +79,15 @@ const colorChange = () => {
     win.style.pointerEvents = "all";
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
-        console.log("Done button clicked!");
+        console.log("Did it")
+        complete1 = true;
+        l2.setAttribute("href", "level2.html")
+        location.href="level2.html"
       })
     return;
   }
 
-  count -= 5;
+  count -= 10;
   game++;
 };
 

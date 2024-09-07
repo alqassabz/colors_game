@@ -35,6 +35,7 @@
     - [X] commit 1 (readMe and psuedo)
     - [X] commit 2 (main board and functionalities)
     - [X] commit 3 (created all pages)
+    - [X] commit 4 (completed index page)
 
 - [ ] **Code indented, spaced, and within code blocks**
 
