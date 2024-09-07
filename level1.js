@@ -19,6 +19,7 @@ for (let i = 1; i <= blocks; i++) {
 let button = document.querySelector(".startbtn");
 const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
+let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
 let count = 201;
 let game = 0;
@@ -61,6 +62,7 @@ const colorChange = () => {
     slot.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   });
 
+ 
   // Set a slightly different color for the diff block
   if (diff) {
     diff.style.backgroundColor = `rgb(${makeSafeColor(r + count)}, ${makeSafeColor(g + count)}, ${makeSafeColor(b + count)})`;
@@ -73,6 +75,7 @@ const colorChange = () => {
     console.log("We reached zero");
     return
   }
+
 
   if (game === games) {
     win.style.opacity = 1;
@@ -90,6 +93,21 @@ const colorChange = () => {
   count -= 10;
   game++;
 };
+
+
+  slots.forEach((slot) => {
+    slot.addEventListener("click", ()=>{
+      if (slot.classList.contains("diff")){
+        colorChange()
+      }
+      else{
+      lose.style.opacity = 1;
+      lose.style.pointerEvents = "all";
+      }
+    })
+  })
+
+
 
 // Start button click event
 button.addEventListener("click", colorChange);

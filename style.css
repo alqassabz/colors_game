@@ -42,7 +42,7 @@ h1{
 }
 
 
-.level-winner, .start {
+.level-winner, .start, .level-loser {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,13 +58,17 @@ h1{
   color: black;
 }
 
-.startbtn, .donebtn{
+.level-loser{
+  background-color: red;
+}
+
+.startbtn, .donebtn, .againbtn{
 background-color: white;
 padding: 10px;
 border: none;
 }
 
-.startbtn:hover, .donebtn:hover{
+.startbtn:hover, .donebtn:hover, .againbtn:hover{
   background-color: gray;
 }
 
