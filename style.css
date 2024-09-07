@@ -1,13 +1,12 @@
-html, body{
+html{
   background: black;
   margin: 0;
-  padding:0;
   height: 100vh;
-  width: 10vw;
+  width: 100vw;
+  display: flex;
 }
 
 body{
-  padding: 0;
   overflow: hidden;
   width: 100vw;
 }
@@ -18,9 +17,8 @@ body{
   grid-gap: 10px;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  height: fit-content;
 }
+
 
 .main {
   margin-top: -100px;
@@ -42,6 +40,7 @@ h1{
   color: white;
   text-align: center;
 }
+
 
 .level-winner, .start {
   position: absolute;
@@ -74,16 +73,23 @@ border: none;
   pointer-events: all;
 }
 
-.navbar{
+.navbar, .top-nav{
+  display: flex;
   background-color: white;
   overflow: hidden;
   position: absolute;
   bottom: 0;
   width: 100vw;
   z-index: 1000;
+  justify-content: center;
 }
 
-.navbar a{
+.top-nav{
+  top: 0;
+  height: 45px;
+}
+
+.navbar a, .top-nav a{
   float: left;
   display: block;
   text-align: center;
@@ -95,8 +101,45 @@ border: none;
 
 .navbar a:hover{
   background-color: gray;
+  text-align: center;
 }
 
 .title{
   color: black
+}
+
+.begin{
+display: flex;
+justify-content: space-;
+align-items: center;
+height: 75vh;
+}
+
+.index-main button{
+  width: 150px;
+  height: 50px;
+}
+.play{
+  background-color: green;
+  border: none;
+  
+}
+
+.play a{
+  color: white;
+  text-decoration: none;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.play:hover{
+  background-color: lightgreen;
+ 
+}
+
+.index-main{
+  display: flex;
+  justify-content: center;
 }

@@ -34,6 +34,7 @@
 - [ ] **At least 20 meaningful git commits**
     - [X] commit 1 (readMe and psuedo)
     - [X] commit 2 (main board and functionalities)
+    - [X] commit 3 (created all pages)
 
 - [ ] **Code indented, spaced, and within code blocks**
 
