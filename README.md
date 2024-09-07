@@ -6,7 +6,7 @@
 
 #### [GitHub](https://github.com/alqassabz) | [LinkedIn](https://www.linkedin.com/in/zahraalqassab03/)
 ***
-
+L
 ### ***Description***
 #### This game is my 1st project in my Software Engineering course at General Assembly. It is a mind focus game that allows the user to test their vision and speed as they try to figure out the different colored block from a group of blocks. 
 ***

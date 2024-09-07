@@ -1,3 +1,71 @@
 body{
-  background: red;
+  background: black;
+
+}
+
+.firsth {
+ color: aqua;
+}
+
+.secondh {
+  color: aqua;
+}
+
+.x{
+  background-color: aliceblue;
+  height: 50px;
+  width: 50px;
+}
+
+.x div {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+}
+
+.cont{
+  display: grid;
+  grid-template-columns: repeat(3, 52px); /* 3 columns, each 100px wide */
+  grid-gap: 10px; /* Gap between the squares */
+  justify-content: center;
+  align-items: center;
+  
+  
+
+}
+
+.slots {
+  /* display:flex; */
+  /* margin-right: 10px;
+  margin-bottom: -50px; */
+  height:50px;
+  width: 50px;
+  background: blue;
+
+  
+}
+
+h1{
+
+  color: white;
+  text-align: center;
+}
+
+.level-winner, .start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4rem;
+  background-color: #111;
+  text-align: center;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 250ms ease;
+}
+
+.start{
+  opacity: 1;
+  pointer-events: all;
 }

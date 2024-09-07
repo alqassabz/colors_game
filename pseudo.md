@@ -1,10 +1,10 @@
 ## STEP 1 (PAGES):
-1. **Index page**
-2. **Level 1 page**
-3. **Level 2 page**
-4. **Level 3 page**
-5. **1 style page**
-6. **3 JS script pages** (possibly 4 for index)
+- [X] **Index page**
+- [ ] **Level 1 page**
+- [ ] **Level 2 page**
+- [ ] **Level 3 page**
+- [X] **1 style page**
+- [XXX] **3 JS script pages** (possibly 4 for index)
 
 **OVERALL PAGES**: 8 (maybe 9)
 
