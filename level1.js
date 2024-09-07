@@ -26,6 +26,8 @@ let game = 0;
 let games = 20;
 let diff = null;
 const l2 = document.querySelector(".l2")
+const timer = document.querySelector(".timer")
+let time = parseInt(timer.innerText)
 
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
@@ -90,8 +92,9 @@ const colorChange = () => {
     return;
   }
 
-  count -= 10;
-  game++;
+  
+  
+
 };
 
 
@@ -99,6 +102,8 @@ const colorChange = () => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
         colorChange()
+        count -= 10;
+        game++;
       }
       else{
       lose.style.opacity = 1;
@@ -107,10 +112,17 @@ const colorChange = () => {
     })
   })
 
-
+  
 
 // Start button click event
 button.addEventListener("click", colorChange);
+
+start.addEventListener("click", ()=>{
+  setInterval(()=>{
+    time ++
+    timer.innerText = time.toString()
+  }, 1000)
+})
 
 
 

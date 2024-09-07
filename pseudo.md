@@ -36,6 +36,7 @@
     - [X] commit 2 (main board and functionalities)
     - [X] commit 3 (created all pages)
     - [X] commit 4 (completed index page)
+    - [X] commit 5 (added loser popup)
 
 - [ ] **Code indented, spaced, and within code blocks**
 
@@ -108,6 +109,23 @@
 
 // console.log(`For normal ==> rgb(${r}, ${g}, ${b})`);
   // console.log(`For diff ==> ${diff.style.backgroundColor}`);
+
+
+  https://www.geeksforgeeks.org/how-to-check-the-given-element-has-the-specified-class-in-javascript/
+
+  https://www.tutorialspoint.com/how-to-redirect-to-another-webpage-using-javascript
+
+  https://www.geeksforgeeks.org/how-to-create-a-group-of-buttons-with-evenly-space-in-css/
+
+  https://www.w3schools.com/howto/howto_css_switch.asp
+
+  https://www.geeksforgeeks.org/create-a-bottom-navigation-menu-using-html-and-css/
+
+  https://www.w3schools.com/css/tryit.asp?filename=trycss_overflow_visible
+
+  https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
+
+  https://developer.mozilla.org/en-US/docs/Web/CSS/position
 
   -->
   
