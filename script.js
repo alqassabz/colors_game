@@ -15,22 +15,25 @@ for (let i = 1; i <= blocks; i++) {
   cont.appendChild(div);
 }
 
-
-const hello1 = document.querySelector(".firsth");
-const hello2 = document.querySelector(".secondh");
 let button = document.querySelector(".startbtn");
 const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let start = document.querySelector(".start");
-let count = 200;
-let game = 1;
+let count = 100;
+let game = 0;
 let games = 9;
 let diff = null;
 
 // Function to safely constrain the color between 0 and 255
-const safeColor = (colorValue) => {
-  return Math.min(255, Math.max(0, colorValue));
-};
+const makeSafeColor = (colorValue) => {
+  if (colorValue > 255){
+    colorValue = 255
+  }
+  else if (colorValue < 0){
+    colorValue = 0
+  }
+  return colorValue
+}
 
 // Function to handle color change
 const colorChange = () => {
@@ -58,41 +61,28 @@ const colorChange = () => {
 
   // Set a slightly different color for the diff block
   if (diff) {
-    diff.style.backgroundColor = `rgb(${safeColor(r + count)}, ${safeColor(g + count)}, ${safeColor(b + count)})`;
+    diff.style.backgroundColor = `rgb(${makeSafeColor(r + count)}, ${makeSafeColor(g + count)}, ${makeSafeColor(b + count)})`;
     // Add the event listener for the new diff block
     diff.addEventListener("click", colorChange);
   }
 
   // Check if the game has reached its end or if count has gone too low
   if (count <= 0) {
-    hello1.innerText = "DONE";
-    hello2.innerText = "DONE";
     console.log("We reached zero");
-    return;
+    return
   }
 
   if (game === games) {
-    console.log("We are done");
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
-
-    // Now select the done button after the win section is shown
-    let done = win.querySelector(".done");  // Query for the done button here
-    if (done) {
+    let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
         console.log("Done button clicked!");
-      });
-    } else {
-      console.error("Done button not found!");
-    }
-
+      })
     return;
   }
 
-  console.log(`For normal ==> rgb(${r}, ${g}, ${b})`);
-  console.log(`For diff ==> ${diff.style.backgroundColor}`);
-
-  count -= 20;
+  count -= 5;
   game++;
 };
 

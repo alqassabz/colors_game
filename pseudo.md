@@ -32,6 +32,8 @@
   - The user should be able to click on one of the blocks (which they see as different). If it is correct, a new set of blocks will appear.
 
 - [ ] **At least 20 meaningful git commits**
+    - [X] commit 1 (readMe and psuedo)
+    - [X] commit 2 (main board and functionalities)
 
 - [ ] **Code indented, spaced, and within code blocks**
 
@@ -95,4 +97,16 @@
 - [ ] Once the **TIMER REACHES ZERO** and the game is **NOT** yet completed (20 rounds/games), the game will be **OVER**.
 
 - [ ] The **TIMER** for **levels 1 and 2** will be displayed **(NOT COUNTDOWN)**.
+
+
+
+
+
+<!-- TO KEEP TRACK OF COLORS:
+
+// console.log(`For normal ==> rgb(${r}, ${g}, ${b})`);
+  // console.log(`For diff ==> ${diff.style.backgroundColor}`);
+
+  -->
+  
 
