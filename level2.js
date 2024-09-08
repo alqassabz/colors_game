@@ -1,13 +1,21 @@
+
+let diff = null;
+if (localStorage.getItem("complete1") === "true")
+  {
+
 const cont = document.querySelector(".cont")
 const again = document.querySelector(".againbtn")
 
 blocks = 25
-let complete2 = false
+if(localStorage.getItem("complete3") === "false"){
+  localStorage.setItem("complete2", "false")
+  }
 let random = Math.floor(Math.random() * blocks);
 
 for (let i = 1; i <= blocks; i++) {
   if(blocks === 25){
     cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+
   }
   if (blocks === 16 || blocks === 12 ) {
     cont.style.gridTemplateColumns = `repeat(4, 52px)`;
@@ -25,13 +33,13 @@ const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
-let count = 201;
+let count = 60;
 let game = 0;
 let games = 20;
-let diff = null;
 const l3 = document.querySelector(".l3")
 const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
+
 
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
@@ -84,13 +92,22 @@ const colorChange = () => {
 
 
   if (game === games) {
+    localStorage.setItem("complete2", "true")
+    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
         console.log("Did it")
-        complete2 = true;
+          
         l3.setAttribute("href", "level3.html")
         location.href="level3.html"
       })
@@ -106,11 +123,20 @@ const colorChange = () => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
         colorChange()
-        count -= 10;
+        // count -= 10;
         game++;
       }
       else{
+        const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`${lossaudios[rand]}`)
+        loseaudio.play();
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000)
+      loseaudio.currentTime = 0
       lose.style.opacity = 1;
+      lose.style.display = "block"
       lose.style.pointerEvents = "all";
       clearInterval(timerStart)
       }
@@ -128,16 +154,27 @@ button.addEventListener("click", colorChange);
 start.addEventListener("click", ()=>{
  timerStart = setInterval(()=>{
     time ++
-    timer.innerText = time.toString()
+    timer.innerText = time.toString() + "s"
   }, 1000)
   
   
 })
 
 again.addEventListener("click", ()=>{
-  location.reload()
+  game = 0
+  time = 0
+  clearInterval(timerStart)
+  timer.innerText = "0"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
 })
+}
 
+else{
+  console.log("oops you didnt complete 1")
+}
 
 
 

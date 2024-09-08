@@ -2,7 +2,10 @@ const cont = document.querySelector(".cont");
 const again = document.querySelector(".againbtn")
 
 blocks = 16
-let complete1 = false
+if(localStorage.getItem("complete2") === "false"){
+localStorage.setItem("complete1", "false")
+}
+
 let random = Math.floor(Math.random() * blocks);
 
 for (let i = 1; i <= blocks; i++) {
@@ -45,6 +48,8 @@ const makeSafeColor = (colorValue) => {
 const colorChange = () => {
   start.style.opacity = 0;
   start.style.display = "none"
+  
+  
 
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
@@ -81,13 +86,21 @@ const colorChange = () => {
 
 
   if (game === games) {
+    localStorage.setItem("complete1", "true")
+    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
         console.log("Did it")
-        complete1 = true;
         l2.setAttribute("href", "level2.html")
         location.href="level2.html"
       })
@@ -103,7 +116,15 @@ const colorChange = () => {
         game++;
       }
       else{
+        const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`${lossaudios[rand]}`)
+        loseaudio.play()
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000);
       lose.style.opacity = 1;
+      lose.style.display = "block"
       lose.style.pointerEvents = "all";
       clearInterval(timerStart)
       }
@@ -114,6 +135,7 @@ const colorChange = () => {
 button.addEventListener("click", colorChange);
 
 start.addEventListener("click", ()=>{
+
  timerStart = setInterval(()=>{
     time ++
     timer.innerText = time.toString() + "s"
@@ -121,7 +143,16 @@ start.addEventListener("click", ()=>{
 })
 
 again.addEventListener("click", ()=>{
-  location.reload()
+  game = 0
+  time = 0
+  diff = null;
+  let count = 150;
+  clearInterval(timerStart)
+  timer.innerText = "0"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
 })
 
 
