@@ -1,11 +1,16 @@
-const cont = document.querySelector(".cont");
+const cont = document.querySelector(".cont")
+const again = document.querySelector(".againbtn")
 
-blocks = 20;
+blocks = 25
+let complete2 = false
 let random = Math.floor(Math.random() * blocks);
 
 for (let i = 1; i <= blocks; i++) {
-  if (blocks === 20) {
+  if(blocks === 25){
     cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+  }
+  if (blocks === 16 || blocks === 12 ) {
+    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
   }
   const div = document.createElement("div");
   div.classList.add("slots");
@@ -18,11 +23,15 @@ for (let i = 1; i <= blocks; i++) {
 let button = document.querySelector(".startbtn");
 const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
+let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
-let count = 100;
+let count = 201;
 let game = 0;
-let games = 9;
+let games = 20;
 let diff = null;
+const l3 = document.querySelector(".l3")
+const timer = document.querySelector(".timer")
+let time = parseInt(timer.innerText)
 
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
@@ -59,6 +68,7 @@ const colorChange = () => {
     slot.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
   });
 
+ 
   // Set a slightly different color for the diff block
   if (diff) {
     diff.style.backgroundColor = `rgb(${makeSafeColor(r + count)}, ${makeSafeColor(g + count)}, ${makeSafeColor(b + count)})`;
@@ -66,28 +76,68 @@ const colorChange = () => {
     diff.addEventListener("click", colorChange);
   }
 
-  // Check if the game has reached its end or if count has gone too low
+  // Check if the game has reached its end 
   if (count <= 0) {
     console.log("We reached zero");
     return
   }
 
+
   if (game === games) {
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
+    clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
-        console.log("Done button clicked!");
+        console.log("Did it")
+        complete2 = true;
+        l3.setAttribute("href", "level3.html")
+        location.href="level3.html"
       })
     return;
   }
 
-  count -= 5;
-  game++;
+  
+  
+
 };
+
+  slots.forEach((slot) => {
+    slot.addEventListener("click", ()=>{
+      if (slot.classList.contains("diff")){
+        colorChange()
+        count -= 10;
+        game++;
+      }
+      else{
+      lose.style.opacity = 1;
+      lose.style.pointerEvents = "all";
+      clearInterval(timerStart)
+      }
+    })
+  })
+
+  
 
 // Start button click event
 button.addEventListener("click", colorChange);
+
+
+
+
+start.addEventListener("click", ()=>{
+ timerStart = setInterval(()=>{
+    time ++
+    timer.innerText = time.toString()
+  }, 1000)
+  
+  
+})
+
+again.addEventListener("click", ()=>{
+  location.reload()
+})
+
 
 
 

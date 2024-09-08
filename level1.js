@@ -1,4 +1,5 @@
 const cont = document.querySelector(".cont");
+const again = document.querySelector(".againbtn")
 
 blocks = 16
 let complete1 = false
@@ -21,7 +22,7 @@ const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
-let count = 201;
+let count = 150;
 let game = 0;
 let games = 20;
 let diff = null;
@@ -92,17 +93,13 @@ const colorChange = () => {
       })
     return;
   }
-
-  
-  
-
-};
+}
 
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
         colorChange()
-        count -= 10;
+        count -= 5;
         game++;
       }
       else{
@@ -113,21 +110,18 @@ const colorChange = () => {
     })
   })
 
-  
-
 // Start button click event
 button.addEventListener("click", colorChange);
-
-
-
 
 start.addEventListener("click", ()=>{
  timerStart = setInterval(()=>{
     time ++
-    timer.innerText = time.toString()
+    timer.innerText = time.toString() + "s"
   }, 1000)
-  
-  
+})
+
+again.addEventListener("click", ()=>{
+  location.reload()
 })
 
 

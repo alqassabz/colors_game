@@ -25,13 +25,11 @@ body, footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  height: 65vh;
 }
 
-.timer {
-  position: absolute; 
-  bottom: 100px;
-  left: 50px;
+
+.timer { 
   height: 40px;
   width: 100px;
   font-size: 36px;
@@ -47,6 +45,32 @@ body, footer{
   background: blue;
   border-radius: none;
   cursor:pointer;
+  /* clip-path: polygon(
+    50% 0%, 
+    61% 35%, 
+    98% 35%, 
+    68% 57%, 
+    79% 91%, 
+    50% 70%, 
+    21% 91%, 
+    32% 57%, 
+    2% 35%, 
+    39% 35%
+  ) */
+  clip-path: polygon(
+    50% 25%, 
+    61% 10%, 
+    75% 0%, 
+    90% 10%, 
+    100% 25%, 
+    100% 50%, 
+    50% 100%, 
+    0% 50%, 
+    0% 25%, 
+    10% 10%, 
+    25% 0%, 
+    39% 10%
+  )
 }
 
 h1{
@@ -55,7 +79,7 @@ h1{
 }
 
 
-.level-winner, .start, .level-loser {
+.level-winner, .start, .level-loser, .level-loser2 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -165,4 +189,45 @@ button:hover{
 .index-main{
   display: flex;
   justify-content: center;
+}
+
+
+#overlay, #custom {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#popupDialog, #customizaton {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+
+#popup-h1{
+  color: black;
+}
+
+#closebtn{
+  height: 40px;
+  width: 90px;
+  border: none;
+  background-color: rgb(3, 3, 93);
+  color: white
+}
+#closebtn:hover{
+  background-color: rgb(101, 194, 241);
 }
