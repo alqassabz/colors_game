@@ -36,3 +36,28 @@ close2.addEventListener("click", ()=>{
   customizer.style.display = "none"
 })
 
+const circle = document.querySelector("#circle")
+const square = document.querySelector("#square")
+const star = document.querySelector("#star")
+const heart = document.querySelector("#heart")
+
+
+circle.addEventListener("click", ()=>{
+  circle.style.backgroundColor = "blue"
+  localStorage.setItem("blocks-shape", "circle")
+})
+square.addEventListener("click", ()=>{
+  square.style.backgroundColor = "blue"
+  localStorage.setItem("blocks-shape", "square")
+})
+star.addEventListener("click", ()=>{
+  star.style.backgroundColor = "blue"
+  localStorage.setItem("blocks-shape", "star")
+})
+heart.addEventListener("click", ()=>{
+  heart.style.backgroundColor = "blue"
+  localStorage.setItem("blocks-shape", "heart")
+})
+
+
+

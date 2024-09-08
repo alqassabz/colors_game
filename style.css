@@ -45,7 +45,7 @@ body, footer{
   background: blue;
   border-radius: none;
   cursor:pointer;
-  clip-path: polygon(
+  /* clip-path: polygon(
     50% 0%, 
     61% 35%, 
     98% 35%, 
@@ -56,7 +56,7 @@ body, footer{
     32% 57%, 
     2% 35%, 
     39% 35%
-  )
+  ) */
   /* clip-path: polygon(
     50% 25%, 
     61% 10%, 
@@ -216,6 +216,10 @@ button:hover{
   z-index: 1000;
 }
 
+#popupDialog2{
+  width: 450px;
+}
+
 
 #popup-h1, #popup-h2{
   color: black;
@@ -230,4 +234,23 @@ button:hover{
 }
 #closebtn:hover, #closebtn2:hover{
   background-color: rgb(101, 194, 241);
+}
+
+.shapes li{
+  display: inline;
+  padding: 15px 25px;
+  background-color: aqua;
+}
+
+.shapes li:hover{
+  cursor: pointer;
+  background-color: cornflowerblue;
+}
+
+.shapes li.selected {
+  background-color: lightgreen; /* Change to your desired color */
+}
+
+.shapes li::after {
+  background-color: cornflowerblue;
 }

@@ -1,15 +1,26 @@
 const cont = document.querySelector(".cont");
 const again = document.querySelector(".againbtn")
 
-blocks = 16
+const shape = document.querySelector(".shapes li")
+// const circle = document.querySelector("#circle")
+// const square = document.querySelector("#square")
+// const star = document.querySelector("#star")
+// const heart = document.querySelector("#heart")
+
+
+
+localStorage.setItem("blocks", "16")
 if(localStorage.getItem("complete2") === "false"){
 localStorage.setItem("complete1", "false")
 }
 
-let random = Math.floor(Math.random() * blocks);
+let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocks")));
 
-for (let i = 1; i <= blocks; i++) {
-  if (blocks === 16 || blocks === 12 ) {
+for (let i = 1; i <= parseInt(localStorage.getItem("blocks")); i++) {
+  if (localStorage.getItem("blocks") === "9") {
+    cont.style.gridTemplateColumns = `repeat(3, 52px)`;
+  }
+  else if (localStorage.getItem("blocks") === "16" || localStorage.getItem("blocks") === "12" ) {
     cont.style.gridTemplateColumns = `repeat(4, 52px)`;
   }
   const div = document.createElement("div");
@@ -89,7 +100,7 @@ const colorChange = () => {
     localStorage.setItem("complete1", "true")
     const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
         let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`${winaudios[rand]}`)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
         setTimeout(() =>{
           winaudio.pause();
@@ -118,7 +129,7 @@ const colorChange = () => {
       else{
         const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
         let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`${lossaudios[rand]}`)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
         loseaudio.play()
         setTimeout(() =>{
           loseaudio.pause();
@@ -130,6 +141,53 @@ const colorChange = () => {
       }
     })
   })
+
+
+  if(localStorage.getItem("blocks-shape") === "circle"){
+  slots.forEach((slot)=>{
+    slot.style.borderRadius="50px"
+  })
+  }
+  else if(localStorage.getItem("blocks-shape") === "square"){
+    slots.forEach((slot)=>{
+      slot.style.borderRadius="none"
+    })
+    }
+  else if(localStorage.getItem("blocks-shape") === "star"){
+      slots.forEach((slot)=>{
+        slot.style.clipPath = `polygon(
+          50% 0%, 
+          61% 35%, 
+          98% 35%, 
+          68% 57%, 
+          79% 91%, 
+          50% 70%, 
+          21% 91%, 
+          32% 57%, 
+          2% 35%, 
+          39% 35%
+        )`
+      })
+      }
+      else if(localStorage.getItem("blocks-shape") === "heart"){
+        slots.forEach((slot)=>{
+          slot.style.clipPath = `polygon(
+        50% 25%, 
+        61% 10%, 
+        75% 0%, 
+        90% 10%, 
+        100% 25%, 
+        100% 50%, 
+        50% 100%, 
+        0% 50%, 
+        0% 25%, 
+        10% 10%, 
+        25% 0%, 
+        39% 10%
+      )`
+        })
+      }
+
 
 // Start button click event
 button.addEventListener("click", colorChange);
@@ -154,7 +212,6 @@ again.addEventListener("click", ()=>{
   start.style.opacity = 1
   start.style.display = "block"
 })
-
 
 
 

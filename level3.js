@@ -93,7 +93,7 @@ const colorChange = () => {
     localStorage.setItem("complete3", "true")
     const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
         let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`${winaudios[rand]}`)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
         setTimeout(() =>{
           winaudio.pause();
@@ -122,7 +122,7 @@ const colorChange = () => {
         audio.pause()
         const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
         let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`${lossaudios[rand]}`)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
         loseaudio.play();
         setTimeout(() =>{
           loseaudio.pause();
