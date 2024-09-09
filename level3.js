@@ -11,8 +11,8 @@ let games = 20;
 const l3 = document.querySelector(".l3")
 const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
-const audio = new Audio("timer.mp3")
-const over = new Audio("timeover.mp3")
+const audio = new Audio("sounds/timer.mp3")
+const over = new Audio("sounds/timeover.mp3")
 
 
 
@@ -48,6 +48,52 @@ const makeSafeColor = (colorValue) => {
   return colorValue
 }
 
+const changeBlockShape = () =>{
+  if(localStorage.getItem("blocks-shape") === "circle"){
+    slots.forEach((slot)=>{
+      slot.style.borderRadius="50px"
+    })
+    }
+    else if(localStorage.getItem("blocks-shape") === "square"){
+      slots.forEach((slot)=>{
+        slot.style.borderRadius="none"
+      })
+      }
+    else if(localStorage.getItem("blocks-shape") === "star"){
+        slots.forEach((slot)=>{
+          slot.style.clipPath = `polygon(
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+          )`
+        })
+        }
+        else if(localStorage.getItem("blocks-shape") === "heart"){
+          slots.forEach((slot)=>{
+            slot.style.clipPath = `polygon(
+          50% 25%, 
+          61% 10%, 
+          75% 0%, 
+          90% 10%, 
+          100% 25%, 
+          100% 50%, 
+          50% 100%, 
+          0% 50%, 
+          0% 25%, 
+          10% 10%, 
+          25% 0%, 
+          39% 10%
+        )`
+          })
+        }
+}
 
 
 const winning = () =>{
@@ -85,7 +131,7 @@ const countdownTimer = () =>{
  audio.play()
  timerStart = setInterval(()=>{
     time --
-    timer.innerText = time.toString()
+    timer.innerText = time.toString() + "s"
     if(parseInt(timer.innerText) === 0 ){
       audio.pause()
       over.play()
@@ -179,7 +225,7 @@ const colorChange = () => {
     })
   })
 
-  
+  changeBlockShape()
 
 // Start button click event
 button.addEventListener("click", colorChange);

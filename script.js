@@ -43,23 +43,127 @@ close2.addEventListener("click", ()=>{
 })
 
 
-
 // CUSTOMIZATIONS
 
-const changeLevel =() =>{
-  if(localStorage.getItem("level")!= null){
-    if(localStorage.getItem("level") === "1"){
-        level1.style.backgroundColor = `lightpink`
+const updateSelected = () =>{
+  let level = localStorage.getItem("level")
+  blockNum1.style.backgroundColor = "green"
+  blockNum2.style.backgroundColor = "green"
+  blockNum3.style.backgroundColor = "green"
+  if( level === "1" ){
+    if(localStorage.getItem("blocksl1") === "9"){
+    blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if(localStorage.getItem("blocksl1") === "12"){
+      blockNum2.style.backgroundColor = "lightgreen"
       }
-    else if(localStorage.getItem("level") === "2"){
-      console.log("reached")
-          level2.style.backgroundColor = `lightpink`
-        }
-    else if(localStorage.getItem("level") === "2"){
-          level3.style.backgroundColor = `lightpink`
-        }
+    else if(localStorage.getItem("blocksl1") === "16"){
+      blockNum3.style.backgroundColor = "lightgreen"
+    }
+  }
+
+  else if( level === "2" ){
+    if(localStorage.getItem("blocksl2") === "20"){
+    blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if(localStorage.getItem("blocksl2") === "25"){
+      blockNum2.style.backgroundColor = "lightgreen"
       }
+    else if(localStorage.getItem("blocksl2") === "30"){
+      blockNum3.style.backgroundColor = "lightgreen"
+    }
+  }
+  else if( level === "3" ){
+    if(localStorage.getItem("blocksl3") === "20"){
+    blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if(localStorage.getItem("blocksl3") === "25"){
+      blockNum2.style.backgroundColor = "lightgreen"
+      }
+    else if(localStorage.getItem("blocksl3") === "30"){
+      blockNum3.style.backgroundColor = "lightgreen"
+    }
+  }
 }
+
+
+
+const changeSize = () =>{
+    if( localStorage.getItem("level") === "1" ){
+        if(localStorage.getItem("blocksl1") === "9"){
+            blockNum1.style.backgroundColor = "lightgreen"
+        }
+        else if (localStorage.getItem("blocksl1") === "12") {
+          blockNum2.style.backgroundColor = "lightgreen"
+        }
+        else {
+          blockNum3.style.backgroundColor = "lightreen"
+        }
+      }
+
+
+
+    else if( localStorage.getItem("level") === "2" ){
+          if(localStorage.getItem("blocksl2") === "20"){
+              blockNum1.style.backgroundColor = "lightgreen"
+          }
+          else if (localStorage.getItem("blocksl2") === "25") {
+            blockNum2.style.backgroundColor = "lightgreen"
+          }
+          else {
+            blockNum3.style.backgroundColor = "lightgreen"
+          }
+        
+          }
+
+          else{
+            if(localStorage.getItem("blocksl3") === "20"){
+              blockNum1.style.backgroundColor = "lightgreen"
+          }
+          else if (localStorage.getItem("blocksl3") === "25") {
+            blockNum2.style.backgroundColor = "lightgreen"
+          }
+          else{
+            blockNum3.style.backgroundColor = "lightgreen"
+          }
+          }
+        }
+
+
+const changeLevel =() =>{
+  const level = localStorage.getItem("level")
+  level1.style.backgroundColor = "red"
+  level2.style.backgroundColor = "red"
+  level3.style.backgroundColor = "red"
+    if(level === "1"){
+        level1.style.backgroundColor = "lightpink"
+        blockNum1.innerText = "9 Blocks"
+        blockNum2.innerText = "12 Blocks"
+        blockNum3.innerText = "16 Blocks"
+        localStorage.setItem("blocksl1", "9");
+        updateSelected()
+      }
+    else if(level === "2"){
+        level2.style.backgroundColor = "lightpink"
+        blockNum1.innerText = "20 Blocks"
+        blockNum2.innerText = "25 Blocks"
+        blockNum3.innerText = "30 Blocks"
+        localStorage.setItem("blocksl2", "20");
+        updateSelected()
+        }
+    else if(level === "3"){
+        level3.style.backgroundColor = "lightpink"
+        blockNum1.innerText = "20 Blocks"
+        blockNum2.innerText = "25 Blocks"
+        blockNum3.innerText = "30 Blocks"
+        localStorage.setItem("blocksl3", "20");
+        updateSelected()
+        }
+      }
+
+
+
+
 
 const changeShape = () =>{
 
@@ -80,44 +184,7 @@ const changeShape = () =>{
 }
 
 
-const changeSize = () =>{
-  if(localStorage.getItem("blocksl1")!= null || localStorage.getItem("blocksl2")!= null || localStorage.getItem("blocksl3")!= null){
-    if( localStorage.getItem("level") === "1" ){
-        if(localStorage.getItem("blocksl1") === "9"){
-            blockNum1.style.backgroundColor = "lightgreen"
-        }
-        else if (localStorage.getItem("blocksl1") === "12") {
-          blockNum2.style.backgroundColor = "lightgreen"
-        }
-        else{
-          blockNum3.style.backgroundColor = "lighgreen"
-        }
-        }
-    else if( localStorage.getItem("level") === "2" ){
-          if(localStorage.getItem("blocksl2") === "20"){
-              blockNum1.style.backgroundColor = "lightgreen"
-          }
-          else if (localStorage.getItem("blocksl2") === "25") {
-            blockNum2.style.backgroundColor = "lightgreen"
-          }
-          else{
-            blockNum3.style.backgroundColor = "lighgreen"
-          }
-          }
 
-          else{
-            if(localStorage.getItem("blocksl3") === "20"){
-              blockNum1.style.backgroundColor = "lightgreen"
-          }
-          else if (localStorage.getItem("blocksl3") === "25") {
-            blockNum2.style.backgroundColor = "lightgreen"
-          }
-          else{
-            blockNum3.style.backgroundColor = "lighgreen"
-          }
-          }
-        }
-}
 
 
 const selectedShapes = () =>{
@@ -179,25 +246,6 @@ heart.addEventListener("click", ()=>{
   selectedShapes()
 })
 
-const selectedLevel = () =>{
-  if(localStorage.getItem("blocks-shape")!= null){
-    if(localStorage.getItem("level")==="1"){
-  level1.style.backgroundColor = `lightpink`
-  level2.style.backgroundColor = `red`
-  level3.style.backgroundColor = `red`
-    }
-    else if(localStorage.getItem("level")==="2"){
-      level1.style.backgroundColor = `red`
-      level2.style.backgroundColor = 'lightpink'
-      level3.style.backgroundColor = `red`
-    }
-    else{
-      level1.style.backgroundColor = `red`
-  level3.style.backgroundColor = 'lightpink'
-  level2.style.backgroundColor = `red`
-    }
-  }
-}
 
 const updateBlocks = () =>{
   if(localStorage.getItem("level") === "1"){
@@ -224,66 +272,77 @@ const updateBlocks = () =>{
 
 level1.addEventListener("click", ()=>{
   localStorage.setItem("level", "1")
-  selectedLevel()
-  updateBlocks()
+  changeLevel()
 })
 
 level2.addEventListener("click", ()=>{
   localStorage.setItem("level", "2")
-  selectedLevel()
-  updateBlocks()
+  changeLevel()
 })
 level3.addEventListener("click", ()=>{
   localStorage.setItem("level", "3")
-  selectedLevel()
-  updateBlocks()
+  changeLevel()
 })
 
 
 
 blockNum1.addEventListener("click", ()=>{
+  const level = localStorage.getItem("level")
+
+  blockNum1.style.backgroundColor = "lightgreen"
   blockNum2.style.backgroundColor ="green"
   blockNum3.style.backgroundColor = "green"
-  blockNum1.style.backgroundColor = "lightgreen"
-  if(localStorage.getItem("level")==="1"){
+  if(level ==="1"){
   localStorage.setItem("blocksl1", "9")
   }
-  else{
+  if(level ==="2"){
     localStorage.setItem("blocksl2", "20")
+    }
+  if(level ==="3"){
     localStorage.setItem("blocksl3", "20")
-  }
+    }
 })
 
 
 
 blockNum2.addEventListener("click", ()=>{
-  blockNum2.style.backgroundColor = "lightgreen"
+  const level = localStorage.getItem("level")
+
   blockNum1.style.backgroundColor = "green"
+  blockNum2.style.backgroundColor ="lightgreen"
   blockNum3.style.backgroundColor = "green"
-  if(localStorage.getItem("level")==="1"){
+  if(level ==="1"){
   localStorage.setItem("blocksl1", "12")
   }
-  else{
+  if(level ==="2"){
     localStorage.setItem("blocksl2", "25")
+    }
+  if(level ==="3"){
     localStorage.setItem("blocksl3", "25")
-  }
+    }
 })
-
 
 
 
 blockNum3.addEventListener("click", ()=>{
+  const level = localStorage.getItem("level")
+
+  blockNum1.style.backgroundColor = "green"
+  blockNum2.style.backgroundColor ="green"
   blockNum3.style.backgroundColor = "lightgreen"
-  blockNum1.style.backgroundColor ="green"
-  blockNum2.style.backgroundColor = "green"
-  if(localStorage.getItem("level")==="1"){
+  if(level ==="1"){
   localStorage.setItem("blocksl1", "16")
   }
-  else{
+  if(level ==="2"){
     localStorage.setItem("blocksl2", "30")
+    }
+  if(level ==="3"){
     localStorage.setItem("blocksl3", "30")
-  }
+    }
 })
+
+
+
 
 
 
