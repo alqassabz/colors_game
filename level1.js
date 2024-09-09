@@ -8,8 +8,9 @@ const shape = document.querySelector(".shapes li")
 // const heart = document.querySelector("#heart")
 
 
-
+if(localStorage.getItem("blocks") === null){
 localStorage.setItem("blocks", "16")
+}
 if(localStorage.getItem("complete2") === "false"){
 localStorage.setItem("complete1", "false")
 }
@@ -98,7 +99,7 @@ const colorChange = () => {
 
   if (game === games) {
     localStorage.setItem("complete1", "true")
-    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3", "win8.pm3"]
         let rand = Math.floor(Math.random()*7)
         const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();

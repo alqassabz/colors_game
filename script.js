@@ -1,9 +1,7 @@
-// const play = document.querySelector(".play")
 
-// play.addEventListener("click", ()=>{
-//   location.href="level1.html"
-
-// })
+if(localStorage.getItem("blocks-shape") === null){
+  localStorage.setItem("blocks-shape", "square")
+}
 
 const instruction = document.querySelector(".viewIns")
 const instructions = document.querySelector("#overlay")
@@ -24,19 +22,46 @@ instruction.addEventListener("click", ()=>{
 custombtn.addEventListener("click", ()=>{
   custom.style.display ="block" 
   customizer.style.display = "block"
-  if(localStorage.getItem("blocks-shape") === "circle"){
-      circle.style.backgroundColor = "blue"
+  if(localStorage.getItem("level")!= null){
+  if(localStorage.getItem("level") === "1"){
+      level1.style.backgroundColor = `lightpink`
     }
-    else if(localStorage.getItem("blocks-shape") === "square"){
-        square.style.backgroundColor = "blue"
+  else if(localStorage.getItem("level") === "2"){
+    console.log("reached")
+        level2.style.backgroundColor = `lightpink`
       }
-      else if(localStorage.getItem("blocks-shape") === "star"){
-        star.style.backgroundColor = "blue"
+  else if(localStorage.getItem("level") === "2"){
+        level3.style.backgroundColor = `lightpink`
       }
-      else if(localStorage.getItem("blocks-shape") === "heart"){
-        heart.style.backgroundColor = "blue"
+    }
+
+    if(localStorage.getItem("blocks-shape")!= null){
+  if(localStorage.getItem("blocks-shape") === "circle"){
+        circle.style.backgroundColor = "blue"
       }
+  else if(localStorage.getItem("blocks-shape") === "square"){
+          square.style.backgroundColor = "blue"
+        }
+  else if(localStorage.getItem("blocks-shape") === "star"){
+          star.style.backgroundColor = "blue"
+        }
+      }
+
+      if(localStorage.getItem("blocks")!= null){
+        if(localStorage.getItem("blocks") === "9" || localStorage.getItem("blocks") === "20"){
+              blockNum1.style.backgroundColor = "lightgreen"
+            }
+        else if(localStorage.getItem("blocks") === "12" || localStorage.getItem("blocks") === "25"){
+                blockNum2.style.backgroundColor = "lightgreen"
+              }
+        else if(localStorage.getItem("blocks") === "16" || localStorage.getItem("blocks") === "30"){
+                blockNum3.style.backgroundColor = "lighgreen"
+              }
+            }
 })
+
+
+
 
 close.addEventListener("click", ()=>{
   instructions.style.display ="none" 
@@ -52,6 +77,12 @@ const circle = document.querySelector("#circle")
 const square = document.querySelector("#square")
 const star = document.querySelector("#star")
 const heart = document.querySelector("#heart")
+const level1 = document.querySelector("#l1")
+const level2 = document.querySelector("#l2")
+const level3 = document.querySelector("#l3")
+const blockNum1 = document.querySelector("#b1")
+const blockNum2 = document.querySelector("#b2")
+const blockNum3 = document.querySelector("#b3")
 
 
 circle.addEventListener("click", ()=>{
@@ -84,23 +115,154 @@ heart.addEventListener("click", ()=>{
   localStorage.setItem("blocks-shape", "heart")
 })
 
-if(localStorage.getItem("blocks-shape") === null){
-  localStorage.setItem("blocks-shape", "square")
-}
 
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
+
+level1.addEventListener("click", ()=>{
+  level1.style.backgroundColor = `lightpink`
+  level2.style.backgroundColor = `red`
+  level3.style.backgroundColor = `red`
+  localStorage.setItem("level", "1")
+  if(localStorage.getItem("level") === "1"){
+    if(localStorage.getItem("blocks") === "20"){
+      localStorage.setItem("blocks", "9")
     }
+    else if(localStorage.getItem("blocks") === "25"){
+      localStorage.setItem("blocks", "12")
+    }
+    else if(localStorage.getItem("blocks") === "30"){
+      localStorage.setItem("blocks", "16")
+    }
+    blockNum1.innerText = "9 Blocks"
+    blockNum2.innerText = "12 Blocks"
+    blockNum3.innerText = "16 Blocks"
+    }
+    else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
+      blockNum1.innerText = "20 Blocks"
+      blockNum2.innerText = "25 Blocks"
+      blockNum3.innerText = "30 Blocks"
+      }
+})
+
+level2.addEventListener("click", ()=>{
+  level1.style.backgroundColor = `red`
+  level2.style.backgroundColor = 'lightpink'
+  level3.style.backgroundColor = `red`
+  localStorage.setItem("level", "2")
+  if(localStorage.getItem("level") === "1"){
+    blockNum1.innerText = "9 Blocks"
+    console.log("clicked")
+    blockNum2.innerText = "12 Blocks"
+    blockNum3.innerText = "16 Blocks"
+    }
+    else if(localStorage.getItem("level") === "2" || localStorage.getItem("level") === "3"){
+      if(localStorage.getItem("blocks") === "9"){
+        localStorage.setItem("blocks", "20")
+      }
+      else if(localStorage.getItem("blocks") === "12"){
+        localStorage.setItem("blocks", "25")
+      }
+      else if(localStorage.getItem("blocks") === "16"){
+        localStorage.setItem("blocks", "30")
+      }
+      blockNum1.innerText = "20 Blocks"
+      blockNum2.innerText = "25 Blocks"
+      blockNum3.innerText = "30 Blocks"
+      }
+})
+level3.addEventListener("click", ()=>{
+  level1.style.backgroundColor = `red`
+  level2.style.backgroundColor = `red`
+  level3.style.backgroundColor = `lightpink`
+  localStorage.setItem("level", "3")
+  if(localStorage.getItem("level") === "1"){
+    blockNum1.innerText = "9 Blocks"
+    console.log("clicked")
+    blockNum2.innerText = "12 Blocks"
+    blockNum3.innerText = "16 Blocks"
+    }
+    else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
+      if(localStorage.getItem("blocks") === "9"){
+        localStorage.setItem("blocks", "20")
+      }
+      else if(localStorage.getItem("blocks") === "12"){
+        localStorage.setItem("blocks", "25")
+      }
+      else if(localStorage.getItem("blocks") === "16"){
+        localStorage.setItem("blocks", "30")
+      }
+      blockNum1.innerText = "20 Blocks"
+      blockNum2.innerText = "25 Blocks"
+      blockNum3.innerText = "30 Blocks"
+      }
+})
+
+const boardSize = document.querySelector(".slider")
+blockNum1.addEventListener("click", ()=>{
+  if(localStorage.getItem("level")==="1"){
+  localStorage.setItem("blocks", "9")
   }
-}
+  else{
+    localStorage.setItem("blocks", "20")
+  }
+})
+
+blockNum2.addEventListener("click", ()=>{
+  if(localStorage.getItem("level")==="1"){
+  localStorage.setItem("blocks", "12")
+  }
+  else{
+    localStorage.setItem("blocks", "25")
+  }
+})
+
+blockNum3.addEventListener("click", ()=>{
+  if(localStorage.getItem("level")==="1"){
+  localStorage.setItem("blocks", "16")
+  }
+  else{
+    localStorage.setItem("blocks", "30")
+  }
+})
+
+blockNum1.addEventListener("click", ()=>{
+  blockNum2.style.backgroundColor ="green"
+  blockNum3.style.backgroundColor = "green"
+  blockNum1.style.backgroundColor = "lightgreen"
+  if(localStorage.getItem("level")==="1"){
+    localStorage.setItem("blocks", "9")
+    }
+    else{
+      localStorage.setItem("blocks", "20")
+      }
+  
+})
+blockNum2.addEventListener("click", ()=>{
+  blockNum2.style.backgroundColor = "lightgreen"
+  blockNum1.style.backgroundColor = "green"
+  blockNum3.style.backgroundColor = "green"
+  if(localStorage.getItem("level")==="1"){
+    localStorage.setItem("blocks", "12")
+    }
+    else{
+      localStorage.setItem("blocks", "25")
+      }
+})
+blockNum3.addEventListener("click", ()=>{
+  blockNum3.style.backgroundColor = "lightgreen"
+  blockNum1.style.backgroundColor ="green"
+  blockNum2.style.backgroundColor = "green"
+  if(localStorage.getItem("level")==="1"){
+  localStorage.setItem("blocks", "16")
+  }
+  else{
+    localStorage.setItem("blocks", "30")
+    }
+})
+
+
+
+
 
 
 

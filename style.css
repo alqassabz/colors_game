@@ -242,27 +242,35 @@ button:hover{
   background-color: aqua;
 }
 
-.level li{
+.level li {
   display: inline;
   padding: 15px 40px;
   
+}
+
+.blocksNum li{
+  display: inline;
+  padding: 15px 30px;
 }
 
 .level #l1:hover, .level #l2:hover, .level #l3:hover{
   background-color: rgb(246, 214, 214);
 }
 
-.level #l1{
-  background-color: rgb(244, 102, 102);
+.blocksNum #b1, .blocksNum #b2, .blocksNum #b3 {
+background-color: rgb(68, 196, 68);
 }
 
-.level #l2{
-  background-color: rgb(234, 64, 64);
+.blocksNum #b1:hover, .blocksNum #b2:hover, .blocksNum #b3:hover {
+  background-color: rgb(156, 235, 156);
+  cursor: pointer;
+  }
+
+
+.level #l1, .level #l2, .level #l3 {
+  background-color: red;
 }
 
-.level #l3{
-  background-color: rgb(255, 0, 0);
-}
 
 .shapes li:hover, .level li:hover{
   cursor: pointer;
@@ -323,4 +331,6 @@ button:hover{
 
 .show {
   display: block;
+  color:rgb(0, 38, 251)
 }
+
