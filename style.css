@@ -242,7 +242,29 @@ button:hover{
   background-color: aqua;
 }
 
-.shapes li:hover{
+.level li{
+  display: inline;
+  padding: 15px 40px;
+  
+}
+
+.level #l1:hover, .level #l2:hover, .level #l3:hover{
+  background-color: rgb(246, 214, 214);
+}
+
+.level #l1{
+  background-color: rgb(244, 102, 102);
+}
+
+.level #l2{
+  background-color: rgb(234, 64, 64);
+}
+
+.level #l3{
+  background-color: rgb(255, 0, 0);
+}
+
+.shapes li:hover, .level li:hover{
   cursor: pointer;
   background-color: cornflowerblue;
 }
@@ -253,4 +275,52 @@ button:hover{
 
 .shapes li::after {
   background-color: cornflowerblue;
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 7px 10px;
+  background-color: gray;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 6px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
 }

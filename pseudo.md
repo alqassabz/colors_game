@@ -39,6 +39,8 @@
     - [X] commit 5 (added loser popup)
     - [X] commit 6 (added a timer)
     - [X] commit 7 (countdown timer + play again)
+    - [X] commit 8 (added sounds for losing and winning)
+    - [X] commit 9 (added shape customization)
 
 - [ ] **Code indented, spaced, and within code blocks**
 
