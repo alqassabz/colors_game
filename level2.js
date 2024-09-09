@@ -1,35 +1,7 @@
-
-let diff = null;
-if (localStorage.getItem("complete1") === "true")
-  {
-
 const cont = document.querySelector(".cont")
 const again = document.querySelector(".againbtn")
-
-blocks = 25
-if(localStorage.getItem("complete3") === "false"){
-  localStorage.setItem("complete2", "false")
-  }
-let random = Math.floor(Math.random() * blocks);
-
-for (let i = 1; i <= blocks; i++) {
-  if(blocks === 25){
-    cont.style.gridTemplateColumns = `repeat(5, 52px)`;
-
-  }
-  if (blocks === 16 || blocks === 12 ) {
-    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
-  }
-  const div = document.createElement("div");
-  div.classList.add("slots");
-  if (i === random) {
-    div.classList.add("diff");
-  }
-  cont.appendChild(div);
-}
-
+let diff = null;
 let button = document.querySelector(".startbtn");
-const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
@@ -41,6 +13,36 @@ const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
 
 
+
+if (localStorage.getItem("complete1") === "true")
+  {
+    if(localStorage.getItem("blocksl2") === null){
+      localStorage.setItem("blocksl2", "25")
+      }
+      if(localStorage.getItem("complete3") === "false"){
+      localStorage.setItem("complete2", "false")
+      }
+
+let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl2")));
+
+for (let i = 1; i <= parseInt(localStorage.getItem("blocksl2")); i++) {
+  if(parseInt(localStorage.getItem("blocksl2")) === 25 || parseInt(localStorage.getItem("blocksl2")) ===30 || parseInt(localStorage.getItem("blocksl2")) === 20){
+    cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+
+  }
+  
+  const div = document.createElement("div");
+  div.classList.add("slots");
+  if (i === random) {
+    div.classList.add("diff");
+  }
+  cont.appendChild(div);
+}
+
+
+const slots = document.querySelectorAll(".slots");
+
+
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
   if (colorValue > 255){
@@ -50,6 +52,93 @@ const makeSafeColor = (colorValue) => {
     colorValue = 0
   }
   return colorValue
+}
+
+
+const changeBlockShape = () =>{
+  if(localStorage.getItem("blocks-shape") === "circle"){
+    slots.forEach((slot)=>{
+      slot.style.borderRadius="50px"
+    })
+    }
+    else if(localStorage.getItem("blocks-shape") === "square"){
+      slots.forEach((slot)=>{
+        slot.style.borderRadius="none"
+      })
+      }
+    else if(localStorage.getItem("blocks-shape") === "star"){
+        slots.forEach((slot)=>{
+          slot.style.clipPath = `polygon(
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+          )`
+        })
+        }
+        else if(localStorage.getItem("blocks-shape") === "heart"){
+          slots.forEach((slot)=>{
+            slot.style.clipPath = `polygon(
+          50% 25%, 
+          61% 10%, 
+          75% 0%, 
+          90% 10%, 
+          100% 25%, 
+          100% 50%, 
+          50% 100%, 
+          0% 50%, 
+          0% 25%, 
+          10% 10%, 
+          25% 0%, 
+          39% 10%
+        )`
+          })
+        }
+}
+
+
+const losing = () =>{
+  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
+        loseaudio.play();
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000)
+      loseaudio.currentTime = 0
+      lose.style.opacity = 1;
+      lose.style.display = "block"
+      lose.style.pointerEvents = "all";
+}
+
+const winning = () =>{
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
+    win.style.opacity = 1;
+    win.style.pointerEvents = "all";
+}
+
+const reset = () =>{
+  game = 0
+  time = 0
+  clearInterval(timerStart)
+  timer.innerText = "0"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
 }
 
 // Function to handle color change
@@ -93,31 +182,19 @@ const colorChange = () => {
 
   if (game === games) {
     localStorage.setItem("complete2", "true")
-    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
-        winaudio.play();
-        setTimeout(() =>{
-          winaudio.pause();
-      }, 2000)
-      winaudio.currentTime = 0
-    win.style.opacity = 1;
-    win.style.pointerEvents = "all";
+    winning()
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
-      done.addEventListener("click", () => {
-        console.log("Did it")
-          
-        l3.setAttribute("href", "level3.html")
+      done.addEventListener("click", () => { 
         location.href="level3.html"
       })
     return;
   }
+}
 
-  
-  
 
-};
+
+
 
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
@@ -127,29 +204,19 @@ const colorChange = () => {
         game++;
       }
       else{
-        const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
-        loseaudio.play();
-        setTimeout(() =>{
-          loseaudio.pause();
-      }, 2000)
-      loseaudio.currentTime = 0
-      lose.style.opacity = 1;
-      lose.style.display = "block"
-      lose.style.pointerEvents = "all";
+      losing()
       clearInterval(timerStart)
       }
     })
   })
 
-  
+  changeBlockShape()
+
+
+
 
 // Start button click event
 button.addEventListener("click", colorChange);
-
-
-
 
 start.addEventListener("click", ()=>{
  timerStart = setInterval(()=>{
@@ -161,20 +228,10 @@ start.addEventListener("click", ()=>{
 })
 
 again.addEventListener("click", ()=>{
-  game = 0
-  time = 0
-  clearInterval(timerStart)
-  timer.innerText = "0"
-  lose.style.opacity = 0
-  lose.style.display = "none"
-  start.style.opacity = 1
-  start.style.display = "block"
+  reset()
 })
 }
 
-else{
-  console.log("oops you didnt complete 1")
-}
 
 
 

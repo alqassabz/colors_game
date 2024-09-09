@@ -2,38 +2,6 @@ const cont = document.querySelector(".cont");
 const again = document.querySelector(".againbtn")
 
 const shape = document.querySelector(".shapes li")
-// const circle = document.querySelector("#circle")
-// const square = document.querySelector("#square")
-// const star = document.querySelector("#star")
-// const heart = document.querySelector("#heart")
-
-
-if(localStorage.getItem("blocks") === null){
-localStorage.setItem("blocks", "16")
-}
-if(localStorage.getItem("complete2") === "false"){
-localStorage.setItem("complete1", "false")
-}
-
-let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocks")));
-
-for (let i = 1; i <= parseInt(localStorage.getItem("blocks")); i++) {
-  if (localStorage.getItem("blocks") === "9") {
-    cont.style.gridTemplateColumns = `repeat(3, 52px)`;
-  }
-  else if (localStorage.getItem("blocks") === "16" || localStorage.getItem("blocks") === "12" ) {
-    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
-  }
-  const div = document.createElement("div");
-  div.classList.add("slots");
-  if (i === random) {
-    div.classList.add("diff");
-  }
-  cont.appendChild(div);
-}
-
-let button = document.querySelector(".startbtn");
-const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
@@ -44,6 +12,36 @@ let diff = null;
 const l2 = document.querySelector(".l2")
 const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
+let button = document.querySelector(".startbtn");
+
+
+if(localStorage.getItem("blocksl1") === null){
+localStorage.setItem("blocksl1", "16")
+}
+if(localStorage.getItem("complete2") === "false"){
+localStorage.setItem("complete1", "false")
+}
+
+let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl1")));
+
+for (let i = 1; i <= parseInt(localStorage.getItem("blocksl1")); i++) {
+  if (localStorage.getItem("blocksl1") === "9") {
+    cont.style.gridTemplateColumns = `repeat(3, 52px)`;
+  }
+  else if (localStorage.getItem("blocksl1") === "16" || localStorage.getItem("blocksl1") === "12" ) {
+    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
+  }
+  const div = document.createElement("div");
+  div.classList.add("slots");
+  if (i === random) {
+    div.classList.add("diff");
+  }
+  cont.appendChild(div);
+}
+
+
+const slots = document.querySelectorAll(".slots");
+
 
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
@@ -54,6 +52,55 @@ const makeSafeColor = (colorValue) => {
     colorValue = 0
   }
   return colorValue
+}
+
+
+
+const changeBlockShape = () =>{
+  if(localStorage.getItem("blocks-shape") === "circle"){
+    slots.forEach((slot)=>{
+      slot.style.borderRadius="50px"
+    })
+    }
+    else if(localStorage.getItem("blocks-shape") === "square"){
+      slots.forEach((slot)=>{
+        slot.style.borderRadius="none"
+      })
+      }
+    else if(localStorage.getItem("blocks-shape") === "star"){
+        slots.forEach((slot)=>{
+          slot.style.clipPath = `polygon(
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+          )`
+        })
+        }
+        else if(localStorage.getItem("blocks-shape") === "heart"){
+          slots.forEach((slot)=>{
+            slot.style.clipPath = `polygon(
+          50% 25%, 
+          61% 10%, 
+          75% 0%, 
+          90% 10%, 
+          100% 25%, 
+          100% 50%, 
+          50% 100%, 
+          0% 50%, 
+          0% 25%, 
+          10% 10%, 
+          25% 0%, 
+          39% 10%
+        )`
+          })
+        }
 }
 
 // Function to handle color change
@@ -120,6 +167,10 @@ const colorChange = () => {
   }
 }
 
+
+
+
+
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
@@ -143,58 +194,14 @@ const colorChange = () => {
     })
   })
 
+  changeBlockShape()
 
-  if(localStorage.getItem("blocks-shape") === "circle"){
-  slots.forEach((slot)=>{
-    slot.style.borderRadius="50px"
-  })
-  }
-  else if(localStorage.getItem("blocks-shape") === "square"){
-    slots.forEach((slot)=>{
-      slot.style.borderRadius="none"
-    })
-    }
-  else if(localStorage.getItem("blocks-shape") === "star"){
-      slots.forEach((slot)=>{
-        slot.style.clipPath = `polygon(
-          50% 0%, 
-          61% 35%, 
-          98% 35%, 
-          68% 57%, 
-          79% 91%, 
-          50% 70%, 
-          21% 91%, 
-          32% 57%, 
-          2% 35%, 
-          39% 35%
-        )`
-      })
-      }
-      else if(localStorage.getItem("blocks-shape") === "heart"){
-        slots.forEach((slot)=>{
-          slot.style.clipPath = `polygon(
-        50% 25%, 
-        61% 10%, 
-        75% 0%, 
-        90% 10%, 
-        100% 25%, 
-        100% 50%, 
-        50% 100%, 
-        0% 50%, 
-        0% 25%, 
-        10% 10%, 
-        25% 0%, 
-        39% 10%
-      )`
-        })
-      }
-
+  
 
 // Start button click event
 button.addEventListener("click", colorChange);
 
 start.addEventListener("click", ()=>{
-
  timerStart = setInterval(()=>{
     time ++
     timer.innerText = time.toString() + "s"

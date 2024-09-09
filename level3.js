@@ -1,32 +1,7 @@
-let diff = null;
-if (localStorage.getItem("complete2") === "true"){
-
 const cont = document.querySelector(".cont")
 const again = document.querySelector(".againbtn")
-
-blocks = 25
-if(localStorage.getItem("complete2") === "false"){
-  localStorage.setItem("complete2", "false")
-  }
-let random = Math.floor(Math.random() * blocks);
-
-for (let i = 1; i <= blocks; i++) {
-  if(blocks === 25){
-    cont.style.gridTemplateColumns = `repeat(5, 52px)`;
-  }
-  if (blocks === 16 || blocks === 12 ) {
-    cont.style.gridTemplateColumns = `repeat(4, 52px)`;
-  }
-  const div = document.createElement("div");
-  div.classList.add("slots");
-  if (i === random) {
-    div.classList.add("diff");
-  }
-  cont.appendChild(div);
-}
-
+let diff = null;
 let button = document.querySelector(".startbtn");
-const slots = document.querySelectorAll(".slots");
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
 let start = document.querySelector(".start");
@@ -39,6 +14,29 @@ let time = parseInt(timer.innerText)
 const audio = new Audio("timer.mp3")
 const over = new Audio("timeover.mp3")
 
+
+
+if (localStorage.getItem("complete2") === "true"){
+
+let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl3")));
+
+for (let i = 1; i <= parseInt(localStorage.getItem("blocksl3")); i++) {
+  if(parseInt(localStorage.getItem("blocksl3")) === 20 || parseInt(localStorage.getItem("blocksl3")) === 25 || parseInt(localStorage.getItem("blocksl3")) === 30){
+    cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+  }
+
+
+  const div = document.createElement("div");
+  div.classList.add("slots");
+  if (i === random) {
+    div.classList.add("diff");
+  }
+  cont.appendChild(div);
+}
+
+const slots = document.querySelectorAll(".slots");
+
+
 // Function to safely constrain the color between 0 and 255
 const makeSafeColor = (colorValue) => {
   if (colorValue > 255){
@@ -48,6 +46,72 @@ const makeSafeColor = (colorValue) => {
     colorValue = 0
   }
   return colorValue
+}
+
+
+
+const winning = () =>{
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
+    win.style.opacity = 1;
+    win.style.pointerEvents = "all";
+}
+
+
+const losing = () =>{
+  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
+        loseaudio.play();
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000)
+      loseaudio.currentTime = 0
+      lose.style.opacity = 1;
+      lose.style.display = "block"
+      lose.style.pointerEvents = "all";
+}
+
+
+const countdownTimer = () =>{
+  over.pause()
+ audio.loop = true;
+ audio.play()
+ timerStart = setInterval(()=>{
+    time --
+    timer.innerText = time.toString()
+    if(parseInt(timer.innerText) === 0 ){
+      audio.pause()
+      over.play()
+      console.log("time over")
+      lose.style.opacity = 1;
+          lose.style.pointerEvents = "all";
+          clearInterval(timerStart)
+
+          setTimeout(() =>{
+            over.pause();
+            over.currentTime = 0;
+        }, 3000);
+    }
+  }, 1000)
+}
+
+
+const reset = () =>{
+  game = 0
+  time = 30
+  clearInterval(timerStart)
+  timer.innerText = "30"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
 }
 
 // Function to handle color change
@@ -91,22 +155,11 @@ const colorChange = () => {
 
   if (game === games) {
     localStorage.setItem("complete3", "true")
-    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
-        winaudio.play();
-        setTimeout(() =>{
-          winaudio.pause();
-      }, 2000)
-      winaudio.currentTime = 0
-    win.style.opacity = 1;
-    win.style.pointerEvents = "all";
+    winning()
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
-        console.log("Did it")
-        l3.setAttribute("href", "level3.html")
-        location.href="level3.html"
+        location.href="index.html"
       })
     return;
   }
@@ -120,17 +173,7 @@ const colorChange = () => {
       }
       else{
         audio.pause()
-        const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
-        loseaudio.play();
-        setTimeout(() =>{
-          loseaudio.pause();
-      }, 2000)
-      loseaudio.currentTime = 0
-      lose.style.opacity = 1;
-      lose.style.display = "block"
-      lose.style.pointerEvents = "all";
+        losing()
       clearInterval(timerStart)
       }
     })
@@ -141,41 +184,10 @@ const colorChange = () => {
 // Start button click event
 button.addEventListener("click", colorChange);
 
-
-
-
-start.addEventListener("click", ()=>{
-  over.pause()
- audio.loop = true;
- audio.play()
- timerStart = setInterval(()=>{
-    time --
-    timer.innerText = time.toString()
-    if(parseInt(timer.innerText) === 0 ){
-      audio.pause()
-      over.play()
-      console.log("time over")
-      lose.style.opacity = 1;
-          lose.style.pointerEvents = "all";
-          clearInterval(timerStart)
-
-          setTimeout(() =>{
-            over.pause();
-            over.currentTime = 0;
-        }, 3000);
-    }
-  }, 1000)
-})
+start.addEventListener("click", countdownTimer)
 
 again.addEventListener("click", ()=>{
-  game = 0
-  time = 30
-  clearInterval(timerStart)
-  timer.innerText = "30"
-  lose.style.opacity = 0
-  lose.style.display = "none"
-  start.style.opacity = 1
-  start.style.display = "block"
+  reset()
 })
 
 }
