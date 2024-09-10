@@ -17,6 +17,10 @@ let all = document.querySelector("html")
 let h1 = document.querySelector("h1")
 const navbar = document.querySelector(".navbar")
 const navbarText = document.querySelectorAll(".navbar a")
+let scoring = document.querySelector(".scoring")
+let scoreVal = 0
+
+
 
 let mode = localStorage.getItem("mode")
 if(mode === "dark"){
@@ -249,11 +253,15 @@ const colorChange = () => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
         colorChange()
-        game++;
+        game++
+        scoreVal +=5
+        scoring.innerText = `${scoreVal.toString()}`
       }
       else{
         losing()
       clearInterval(timerStart)
+      scoreVal = 0
+      scoring.innerText = "000"
       }
     })
   })

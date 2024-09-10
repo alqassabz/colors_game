@@ -19,6 +19,8 @@ let playbtn = document.querySelector(".play")
 let h1 = document.querySelector("h1")
 const navbar = document.querySelector(".navbar")
 const navbarText = document.querySelectorAll(".navbar a")
+let scoring = document.querySelector(".scoring")
+let scoreVal = 0
 
 
 let mode = localStorage.getItem("mode")
@@ -174,16 +176,7 @@ const colorChange = () => {
 
   if (game === games) {
     localStorage.setItem("complete1", "true")
-    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.pm3"]
-        let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
-        winaudio.play();
-        setTimeout(() =>{
-          winaudio.pause();
-      }, 2000)
-      winaudio.currentTime = 0
-    win.style.opacity = 1;
-    win.style.pointerEvents = "all";
+    winning()
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
@@ -195,14 +188,52 @@ const colorChange = () => {
 }
 
 
+const losing = () =>{
+  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
+        loseaudio.play();
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000)
+      loseaudio.currentTime = 0
+      lose.style.opacity = 1;
+      lose.style.display = "block"
+      lose.style.pointerEvents = "all";
+}
+
+const winning = () =>{
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
+    win.style.opacity = 1;
+    win.style.pointerEvents = "all";
+}
+
+const reset = () =>{
+  game = 0
+  time = 0
+  count = 150
+  clearInterval(timerStart)
+  timer.innerText = "0"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "none"
+  })
+}
 
 
-let scoring = document.querySelector(".scoring")
-let scoreVal = 0
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
-        
         colorChange()
         count -= 5;
         game++;
@@ -210,16 +241,7 @@ let scoreVal = 0
         scoring.innerText = `${scoreVal.toString()}`
       }
       else{
-        const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
-        loseaudio.play()
-        setTimeout(() =>{
-          loseaudio.pause();
-      }, 2000);
-      lose.style.opacity = 1;
-      lose.style.display = "block"
-      lose.style.pointerEvents = "all";
+        losing()
       clearInterval(timerStart)
       scoreVal = 0
       scoring.innerText = "000"
@@ -242,16 +264,7 @@ start.addEventListener("click", ()=>{
 })
 
 again.addEventListener("click", ()=>{
-  game = 0
-  time = 0
-  diff = null;
-  let count = 150;
-  clearInterval(timerStart)
-  timer.innerText = "0"
-  lose.style.opacity = 0
-  lose.style.display = "none"
-  start.style.opacity = 1
-  start.style.display = "block"
+  reset()
 })
 
 

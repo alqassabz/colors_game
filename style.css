@@ -266,62 +266,6 @@ button:hover{
   padding: 5px 20px;
 }
 
-/* .mode #dark, .mode #light{
-  background-color: darkviolet;
-}
-
-.mode li:hover, .mode li:hover{
-  cursor: pointer;
-  background-color: cornflowerblue;
-}
-
-
-.level li:hover, .level li:hover{
-  cursor: pointer;
-  background-color: cornflowerblue;
-}
-
-.level #l1:hover, .level #l2:hover, .level #l3:hover{
-  background-color: rgb(246, 214, 214);
-}
-
-.blocksNum #b1, .blocksNum #b2, .blocksNum #b3 {
-background-color: rgb(68, 196, 68);
-}
-
-.blocksNum #b1:hover, .blocksNum #b2:hover, .blocksNum #b3:hover {
-  background-color: rgb(156, 235, 156);
-  cursor: pointer;
-  } */
-
-
-/* .level #l1, .level #l2, .level #l3 {
-  background-color: red;
-} */
-
-
- li:hover{
-  cursor: pointer;
-  background-color: cornflowerblue;
-}
-
-/* .shapes li.selected {
-  background-color: lightgreen; 
-}
-
-.shapes li::after {
-  background-color: cornflowerblue;
-}
-.mode li::after {
-  background-color: cornflowerblue;
-}
-.level li::after {
-  background-color: cornflowerblue;
-}
-.blocksNum li::after {
-  background-color: cornflowerblue;
-} */
-
 
 /* CSS */
 button {

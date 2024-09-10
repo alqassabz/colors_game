@@ -207,16 +207,13 @@ const changeLevel =() =>{
         updateSelected()
         }
       }
-
       const changeShape = () => {
-        // Select your elements
-        const circle = document.querySelector('.circle');
-        const square = document.querySelector('.square');
-        const star = document.querySelector('.star');
-        const heart = document.querySelector('.heart');
+        square.style.backgroundColor ="aqua"
+        star.style.backgroundColor = "aqua"
+        heart.style.backgroundColor = "aqua"
+        circle.style.backgroundColor = "aqua"
       
         // Set background colors based on localStorage value
-        if (localStorage.getItem("blocks-shape") != null) {
           const shape = localStorage.getItem("blocks-shape");
           if (shape === "circle") {
             circle.style.backgroundColor = "blue";
@@ -227,79 +224,12 @@ const changeLevel =() =>{
           } else if (shape === "heart") {
             heart.style.backgroundColor = "blue";
           }
+          stars()
         }
       
-        stars()
-      };
-      
 
 
 
-      // const changeShape = () => {
-      //   // Select your elements
-      //   const circle = document.querySelector('.circle');
-      //   const square = document.querySelector('.square');
-      //   const star = document.querySelector('.star');
-      //   const heart = document.querySelector('.heart');
-      
-      //   // Set background colors based on localStorage value
-      //   if (localStorage.getItem("blocks-shape") != null) {
-      //     if (localStorage.getItem("blocks-shape") === "circle") {
-      //       circle.style.backgroundColor = "blue";
-      //     } else if (localStorage.getItem("blocks-shape") === "square") {
-      //       square.style.backgroundColor = "blue";
-      //     } else if (localStorage.getItem("blocks-shape") === "star") {
-      //       star.style.backgroundColor = "blue";
-      //     } else if (localStorage.getItem("blocks-shape") === "heart") {
-      //       heart.style.backgroundColor = "blue";
-      //     }
-      //   }
-      
-      //   // Get the stylesheet
-      //   const stylesheet = document.styleSheets[0]; // This assumes the first stylesheet in the document
-      
-      //   // Loop through all CSS rules
-      //   for (let i = 0; i < stylesheet.cssRules.length; i++) {
-      //     const rule = stylesheet.cssRules[i];
-      
-         
-      //   }
-      // };
-      
-
-
-
-
-
-const selectedShapes = () =>{
-  if(localStorage.getItem("blocks-shape")!= null){
-  if(localStorage.getItem("blocks-shape")==="circle"){
-  square.style.backgroundColor ="aqua"
-  star.style.backgroundColor = "aqua"
-  heart.style.backgroundColor = "aqua"
-  circle.style.backgroundColor = "blue"
-}
-else if(localStorage.getItem("blocks-shape")==="square"){
-  square.style.backgroundColor = "blue"
-  star.style.backgroundColor = "aqua"
-  heart.style.backgroundColor = "aqua"
-  circle.style.backgroundColor = "aqua"
-}
-else if(localStorage.getItem("blocks-shape")==="star"){
-  star.style.backgroundColor = "blue"
-  square.style.backgroundColor ="aqua"
-  heart.style.backgroundColor = "aqua"
-  circle.style.backgroundColor = "aqua"
-}
-else{
-  heart.style.backgroundColor = "blue"
-  square.style.backgroundColor ="aqua"
-  star.style.backgroundColor = "aqua"
-  circle.style.backgroundColor = "aqua"
-}
-  }
-
-}
 
 // EVENT LISTENERS CUSTOMIZATION
 
@@ -315,20 +245,20 @@ custombtn.addEventListener("click", ()=>{
 
 circle.addEventListener("click", ()=>{
   localStorage.setItem("blocks-shape", "circle")
-  selectedShapes()
+  changeShape()
   
 })
 square.addEventListener("click", ()=>{
   localStorage.setItem("blocks-shape", "square")
-  selectedShapes()
+  changeShape()
 })
 star.addEventListener("click", ()=>{
   localStorage.setItem("blocks-shape", "star")
-  selectedShapes()
+  changeShape()
 })
 heart.addEventListener("click", ()=>{
   localStorage.setItem("blocks-shape", "heart")
-  selectedShapes()
+  changeShape()
 })
 
 
