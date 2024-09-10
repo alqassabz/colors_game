@@ -97,13 +97,14 @@ const changeBlockShape = () =>{
 
 
 const winning = () =>{
+  audio.pause()
   const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
         let rand = Math.floor(Math.random()*7)
         const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
         setTimeout(() =>{
           winaudio.pause();
-      }, 2000)
+      }, 4000)
       winaudio.currentTime = 0
     win.style.opacity = 1;
     win.style.pointerEvents = "all";
@@ -111,13 +112,14 @@ const winning = () =>{
 
 
 const losing = () =>{
+  audio.pause()
   const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
         let rand = Math.floor(Math.random()*7)
         const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
         loseaudio.play();
         setTimeout(() =>{
           loseaudio.pause();
-      }, 2000)
+      }, 4000)
       loseaudio.currentTime = 0
       lose.style.opacity = 1;
       lose.style.display = "block"
@@ -126,7 +128,7 @@ const losing = () =>{
 
 
 const countdownTimer = () =>{
-  over.pause()
+ over.pause()
  audio.loop = true;
  audio.play()
  timerStart = setInterval(()=>{
@@ -218,7 +220,6 @@ const colorChange = () => {
         game++;
       }
       else{
-        audio.pause()
         losing()
       clearInterval(timerStart)
       }

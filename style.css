@@ -45,32 +45,6 @@ body, footer{
   background: blue;
   border-radius: none;
   cursor:pointer;
-  /* clip-path: polygon(
-    50% 0%, 
-    61% 35%, 
-    98% 35%, 
-    68% 57%, 
-    79% 91%, 
-    50% 70%, 
-    21% 91%, 
-    32% 57%, 
-    2% 35%, 
-    39% 35%
-  ) */
-  /* clip-path: polygon(
-    50% 25%, 
-    61% 10%, 
-    75% 0%, 
-    90% 10%, 
-    100% 25%, 
-    100% 50%, 
-    50% 100%, 
-    0% 50%, 
-    0% 25%, 
-    10% 10%, 
-    25% 0%, 
-    39% 10%
-  ) */
 }
 
 h1{
@@ -113,7 +87,7 @@ border: none;
   pointer-events: all;
 }
 
-.navbar, .top-nav{
+.navbar{
   display: flex;
   background-color: white;
   overflow: hidden;
@@ -123,12 +97,7 @@ border: none;
   justify-content: center;
 }
 
-.top-nav{
-  top: 0;
-  height: 45px;
-}
-
-.navbar a, .top-nav a{
+.navbar a{
   float: left;
   display: block;
   text-align: center;
@@ -238,7 +207,7 @@ button:hover{
 
 .shapes li{
   display: inline;
-  padding: 15px 25px;
+  padding: 15px 27.5px;
   background-color: aqua;
 }
 
@@ -251,6 +220,20 @@ button:hover{
 .blocksNum li{
   display: inline;
   padding: 15px 30px;
+}
+
+.mode li{
+  display: inline;
+  padding: 15px 57px;
+}
+
+.mode #dark, .mode #light{
+  background-color: darkviolet;
+}
+
+.mode #dark:hover, .mode #light:hover{
+  background-color: rgb(215, 141, 243);
+  cursor: pointer;
 }
 
 .level #l1:hover, .level #l2:hover, .level #l3:hover{
@@ -285,52 +268,4 @@ background-color: rgb(68, 196, 68);
   background-color: cornflowerblue;
 }
 
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  cursor: pointer;
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 7px 10px;
-  background-color: gray;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown:hover .dropbtn, .dropbtn:focus {
-  background-color: red;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 6px 8px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.show {
-  display: block;
-  color:rgb(0, 38, 251)
-}
 

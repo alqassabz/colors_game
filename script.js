@@ -17,10 +17,20 @@ const blockNum1 = document.querySelector("#b1")
 const blockNum2 = document.querySelector("#b2")
 const blockNum3 = document.querySelector("#b3")
 const boardSize = document.querySelector(".slider")
-
+const body = document.querySelector("body")
+const dark = document.querySelector("#dark")
+const light = document.querySelector("#light")
+const all = document.querySelector("html")
+const h1 = document.querySelector("h1")
+const navbar = document.querySelector(".navbar")
+const navbarText = document.querySelectorAll(".navbar a")
 
 if(localStorage.getItem("blocks-shape") === null){
   localStorage.setItem("blocks-shape", "square")
+}
+
+if(localStorage.getItem("mode") === null){
+  localStorage.setItem("mode", "dark")
 }
 
 
@@ -130,6 +140,40 @@ const changeSize = () =>{
         }
 
 
+        const changeMode = () =>{
+          let mode = localStorage.getItem("mode")
+          if(mode === "light"){
+              all.style.backgroundColor = "lightgray"
+              dark.style.backgroundColor = "darkviolet"
+              light.style.backgroundColor = `rgb(215, 141, 243)`
+              h1.style.color = "black"
+              navbar.style.backgroundColor = "black"
+              navbarText.forEach((text)=>{
+                text.style.color= "white"
+              })
+              custombtn.style.backgroundColor="black"
+              custombtn.style.color="white"
+              instruction.style.backgroundColor="black"
+              instruction.style.color="white"
+            
+          }
+          else if (mode === "dark"){
+            all.style.backgroundColor = "black"
+            light.style.backgroundColor = "darkviolet"
+            dark.style.backgroundColor = `rgb(215, 141, 243)`
+            h1.style.color = "white"
+            navbar.style.backgroundColor = "white"
+            navbarText.forEach((text)=>{
+              text.style.color= "black"
+            })
+            custombtn.style.backgroundColor="white"
+              custombtn.style.color="black"
+              instruction.style.backgroundColor="white"
+              instruction.style.color="black"
+          }
+        }
+
+
 const changeLevel =() =>{
   const level = localStorage.getItem("level")
   level1.style.backgroundColor = "red"
@@ -225,6 +269,7 @@ custombtn.addEventListener("click", ()=>{
   changeLevel()
   changeShape()
   changeSize()
+  changeMode()
 })
 
 
@@ -339,6 +384,17 @@ blockNum3.addEventListener("click", ()=>{
   if(level ==="3"){
     localStorage.setItem("blocksl3", "30")
     }
+})
+
+
+dark.addEventListener("click", ()=>{
+  localStorage.setItem("mode", "dark")
+  changeMode()
+})
+
+light.addEventListener("click", ()=>{
+  localStorage.setItem("mode", "light")
+  changeMode()
 })
 
 
