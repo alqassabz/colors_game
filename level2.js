@@ -8,10 +8,33 @@ let start = document.querySelector(".start");
 let count = 60;
 let game = 0;
 let games = 20;
+let all = document.querySelector("html")
 const l3 = document.querySelector(".l3")
 const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
+let h1 = document.querySelector("h1")
+const navbar = document.querySelector(".navbar")
+const navbarText = document.querySelectorAll(".navbar a")
 
+
+let mode = localStorage.getItem("mode")
+if(mode === "dark"){
+  all.style.backgroundColor = "black"
+  timer.style.color = "black"
+  timer.style.backgroundColor = "white"
+  h1.style.color = "white"
+}
+else if (mode === "light"){
+  all.style.backgroundColor = "#F6F5F2"
+  timer.style.color = "white"
+  timer.style.backgroundColor = "black"
+  h1.style.color = "black"
+  navbar.style.backgroundColor = "black"
+  navbarText.forEach((text)=>{
+  text.style.color= "white"
+  })
+
+}
 
 
 if (localStorage.getItem("complete1") === "true")
@@ -26,9 +49,11 @@ if (localStorage.getItem("complete1") === "true")
 let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl2")));
 
 for (let i = 1; i <= parseInt(localStorage.getItem("blocksl2")); i++) {
-  if(parseInt(localStorage.getItem("blocksl2")) === 25 || parseInt(localStorage.getItem("blocksl2")) ===30 || parseInt(localStorage.getItem("blocksl2")) === 20){
+  if(parseInt(localStorage.getItem("blocksl2")) === 20 || parseInt(localStorage.getItem("blocksl2")) === 25 ){
     cont.style.gridTemplateColumns = `repeat(5, 52px)`;
-
+  }
+  else if (parseInt(localStorage.getItem("blocksl2")) === 30){ 
+    cont.style.gridTemplateColumns = `repeat(6, 52px)`
   }
   
   const div = document.createElement("div");
@@ -118,7 +143,7 @@ const losing = () =>{
 }
 
 const winning = () =>{
-  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
         let rand = Math.floor(Math.random()*7)
         const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
@@ -139,13 +164,19 @@ const reset = () =>{
   lose.style.display = "none"
   start.style.opacity = 1
   start.style.display = "block"
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "none"
+  })
 }
 
 // Function to handle color change
 const colorChange = () => {
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "all"
+  })
+
   start.style.opacity = 0;
   start.style.display = "none"
-
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);

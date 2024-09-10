@@ -25,6 +25,7 @@ const h1 = document.querySelector("h1")
 const navbar = document.querySelector(".navbar")
 const navbarText = document.querySelectorAll(".navbar a")
 
+
 if(localStorage.getItem("blocks-shape") === null){
   localStorage.setItem("blocks-shape", "square")
 }
@@ -32,6 +33,8 @@ if(localStorage.getItem("blocks-shape") === null){
 if(localStorage.getItem("mode") === null){
   localStorage.setItem("mode", "dark")
 }
+
+
 
 
 // INSTRUCTIONS
@@ -143,7 +146,7 @@ const changeSize = () =>{
         const changeMode = () =>{
           let mode = localStorage.getItem("mode")
           if(mode === "light"){
-              all.style.backgroundColor = "lightgray"
+              all.style.backgroundColor = "#F6F5F2"
               dark.style.backgroundColor = "darkviolet"
               light.style.backgroundColor = `rgb(215, 141, 243)`
               h1.style.color = "black"
@@ -152,9 +155,8 @@ const changeSize = () =>{
                 text.style.color= "white"
               })
               custombtn.style.backgroundColor="black"
-              custombtn.style.color="white"
               instruction.style.backgroundColor="black"
-              instruction.style.color="white"
+              // starsClass.style.color = "black"
             
           }
           else if (mode === "dark"){
@@ -167,9 +169,8 @@ const changeSize = () =>{
               text.style.color= "black"
             })
             custombtn.style.backgroundColor="white"
-              custombtn.style.color="black"
               instruction.style.backgroundColor="white"
-              instruction.style.color="black"
+              // starsClass.style.color = "white"
           }
         }
 
@@ -205,27 +206,64 @@ const changeLevel =() =>{
         }
       }
 
-
-
-
-
-const changeShape = () =>{
-
-  if(localStorage.getItem("blocks-shape")!= null){
-    if(localStorage.getItem("blocks-shape") === "circle"){
-          circle.style.backgroundColor = "blue"
+      const changeShape = () => {
+        // Select your elements
+        const circle = document.querySelector('.circle');
+        const square = document.querySelector('.square');
+        const star = document.querySelector('.star');
+        const heart = document.querySelector('.heart');
+      
+        // Set background colors based on localStorage value
+        if (localStorage.getItem("blocks-shape") != null) {
+          const shape = localStorage.getItem("blocks-shape");
+          if (shape === "circle") {
+            circle.style.backgroundColor = "blue";
+          } else if (shape === "square") {
+            square.style.backgroundColor = "blue";
+          } else if (shape === "star") {
+            star.style.backgroundColor = "blue";
+          } else if (shape === "heart") {
+            heart.style.backgroundColor = "blue";
+          }
         }
-    else if(localStorage.getItem("blocks-shape") === "square"){
-            square.style.backgroundColor = "blue"
-          }
-    else if(localStorage.getItem("blocks-shape") === "star"){
-            star.style.backgroundColor = "blue"
-          }
-          else{
-            heart.style.backgroundColor = "blue"
-          }
-        }
-}
+      
+        stars()
+      };
+      
+
+
+
+      // const changeShape = () => {
+      //   // Select your elements
+      //   const circle = document.querySelector('.circle');
+      //   const square = document.querySelector('.square');
+      //   const star = document.querySelector('.star');
+      //   const heart = document.querySelector('.heart');
+      
+      //   // Set background colors based on localStorage value
+      //   if (localStorage.getItem("blocks-shape") != null) {
+      //     if (localStorage.getItem("blocks-shape") === "circle") {
+      //       circle.style.backgroundColor = "blue";
+      //     } else if (localStorage.getItem("blocks-shape") === "square") {
+      //       square.style.backgroundColor = "blue";
+      //     } else if (localStorage.getItem("blocks-shape") === "star") {
+      //       star.style.backgroundColor = "blue";
+      //     } else if (localStorage.getItem("blocks-shape") === "heart") {
+      //       heart.style.backgroundColor = "blue";
+      //     }
+      //   }
+      
+      //   // Get the stylesheet
+      //   const stylesheet = document.styleSheets[0]; // This assumes the first stylesheet in the document
+      
+      //   // Loop through all CSS rules
+      //   for (let i = 0; i < stylesheet.cssRules.length; i++) {
+      //     const rule = stylesheet.cssRules[i];
+      
+         
+      //   }
+      // };
+      
 
 
 
@@ -398,7 +436,64 @@ light.addEventListener("click", ()=>{
 })
 
 
+changeMode()
 
+
+function stars() {
+  let e = document.createElement("div");
+  let size = Math.random() * 12;
+  let duration = Math.random() * 3;
+
+  e.setAttribute("class", "star");
+  document.body.appendChild(e);
+
+  e.style.left = Math.random() * +innerWidth + "px";
+  e.style.fontSize = 12 + size + "px";
+  e.style.animationDuration = 4 + duration + "s";
+
+  setTimeout(function () {
+    document.body.removeChild(e);
+  }, 5000);
+
+  // Get the stylesheet
+  const stylesheet = document.styleSheets[0]; // This assumes the first stylesheet in the document
+      
+  // Check if the stylesheet is accessible
+  if (!stylesheet) {
+    console.error('Stylesheet not found');
+    return;
+  }
+
+  // Loop through all CSS rules
+  let ruleFound = false;
+  for (let i = 0; i < stylesheet.cssRules.length; i++) {
+    const rule = stylesheet.cssRules[i];
+
+    // Check for the rule that defines the .star::before selector
+    if (rule.selectorText === ".star::before") {
+      ruleFound = true;
+      const shape = localStorage.getItem("blocks-shape");
+      if (shape === "circle") {
+        rule.style.content = '"\\f111"'; 
+      } else if (shape === "square") {
+        rule.style.content = '"\\f0c8"'; 
+      } else if (shape === "star") {
+        rule.style.content = '"\\f005"'; 
+      } else if (shape === "heart") {
+        rule.style.content = '"\\f004"'; 
+      }
+      break; // Exit loop once the rule is found
+    }
+  }
+
+  if (!ruleFound) {
+    console.error('CSS rule .star::before not found');
+  }
+}
+
+setInterval(function () {
+  stars();
+}, 100);
 
 
 

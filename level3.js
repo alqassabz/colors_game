@@ -13,6 +13,29 @@ const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
 const audio = new Audio("sounds/timer.mp3")
 const over = new Audio("sounds/timeover.mp3")
+let all = document.querySelector("html")
+let h1 = document.querySelector("h1")
+const navbar = document.querySelector(".navbar")
+const navbarText = document.querySelectorAll(".navbar a")
+
+let mode = localStorage.getItem("mode")
+if(mode === "dark"){
+  all.style.backgroundColor = "black"
+  timer.style.color = "black"
+  timer.style.backgroundColor = "white"
+  h1.style.color = "white"
+}
+else if (mode === "light"){
+  all.style.backgroundColor = "#F6F5F2"
+  timer.style.color = "white"
+  timer.style.backgroundColor = "black"
+  h1.style.color = "black"
+  navbar.style.backgroundColor = "black"
+  navbarText.forEach((text)=>{
+  text.style.color= "white"
+  })
+
+}
 
 
 
@@ -21,8 +44,11 @@ if (localStorage.getItem("complete2") === "true"){
 let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl3")));
 
 for (let i = 1; i <= parseInt(localStorage.getItem("blocksl3")); i++) {
-  if(parseInt(localStorage.getItem("blocksl3")) === 20 || parseInt(localStorage.getItem("blocksl3")) === 25 || parseInt(localStorage.getItem("blocksl3")) === 30){
+  if(parseInt(localStorage.getItem("blocksl3")) === 20 || parseInt(localStorage.getItem("blocksl3")) === 25 ){
     cont.style.gridTemplateColumns = `repeat(5, 52px)`;
+  }
+  else if (parseInt(localStorage.getItem("blocksl3")) === 30){ 
+    cont.style.gridTemplateColumns = `repeat(6, 52px)`
   }
 
 
@@ -98,7 +124,7 @@ const changeBlockShape = () =>{
 
 const winning = () =>{
   audio.pause()
-  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3"]
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
         let rand = Math.floor(Math.random()*7)
         const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
@@ -160,10 +186,16 @@ const reset = () =>{
   lose.style.display = "none"
   start.style.opacity = 1
   start.style.display = "block"
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "none"
+  })
 }
 
 // Function to handle color change
 const colorChange = () => {
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "all"
+  })
   start.style.opacity = 0;
   start.style.display = "none"
 

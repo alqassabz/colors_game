@@ -1,4 +1,5 @@
 const cont = document.querySelector(".cont");
+const main = document.querySelector(".main")
 const again = document.querySelector(".againbtn")
 
 const shape = document.querySelector(".shapes li")
@@ -13,7 +14,31 @@ const l2 = document.querySelector(".l2")
 const timer = document.querySelector(".timer")
 let time = parseInt(timer.innerText)
 let button = document.querySelector(".startbtn");
+let all = document.querySelector("html")
+let playbtn = document.querySelector(".play")
+let h1 = document.querySelector("h1")
+const navbar = document.querySelector(".navbar")
+const navbarText = document.querySelectorAll(".navbar a")
 
+
+let mode = localStorage.getItem("mode")
+if(mode === "dark"){
+  all.style.backgroundColor = "black"
+  timer.style.color = "black"
+  timer.style.backgroundColor = "white"
+  h1.style.color = "white"
+}
+else if (mode === "light"){
+  all.style.backgroundColor = "#F6F5F2"
+  timer.style.color = "white"
+  timer.style.backgroundColor = "black"
+  h1.style.color = "black"
+  navbar.style.backgroundColor = "black"
+  navbarText.forEach((text)=>{
+  text.style.color= "white"
+  })
+
+}
 
 if(localStorage.getItem("blocksl1") === null){
 localStorage.setItem("blocksl1", "16")
@@ -105,6 +130,9 @@ const changeBlockShape = () =>{
 
 // Function to handle color change
 const colorChange = () => {
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "all"
+  })
   start.style.opacity = 0;
   start.style.display = "none"
   
@@ -146,7 +174,7 @@ const colorChange = () => {
 
   if (game === games) {
     localStorage.setItem("complete1", "true")
-    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win7.mp3", "win8.pm3"]
+    const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.pm3"]
         let rand = Math.floor(Math.random()*7)
         const winaudio = new Audio(`sounds/${winaudios[rand]}`)
         winaudio.play();
@@ -160,7 +188,6 @@ const colorChange = () => {
     let done = win.querySelector(".donebtn");  
       done.addEventListener("click", () => {
         console.log("Did it")
-        l2.setAttribute("href", "level2.html")
         location.href="level2.html"
       })
     return;
