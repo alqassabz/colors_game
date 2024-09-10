@@ -197,13 +197,17 @@ const colorChange = () => {
 
 
 
-
+let scoring = document.querySelector(".scoring")
+let scoreVal = 0
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
+        
         colorChange()
         count -= 5;
         game++;
+        scoreVal +=5
+        scoring.innerText = `${scoreVal.toString()}`
       }
       else{
         const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
@@ -217,6 +221,8 @@ const colorChange = () => {
       lose.style.display = "block"
       lose.style.pointerEvents = "all";
       clearInterval(timerStart)
+      scoreVal = 0
+      scoring.innerText = "000"
       }
     })
   })

@@ -172,6 +172,8 @@ const changeSize = () =>{
               instruction.style.backgroundColor="white"
               // starsClass.style.color = "white"
           }
+
+          stars()
         }
 
 
@@ -482,8 +484,17 @@ function stars() {
       } else if (shape === "heart") {
         rule.style.content = '"\\f004"'; 
       }
+      let mode= localStorage.getItem("mode")
+    if(mode === "light"){
+      rule.style.color = "black"
+    }
+    else if (mode === "dark"){
+      rule.style.color = "white"
+    }
       break; // Exit loop once the rule is found
     }
+    
+
   }
 
   if (!ruleFound) {
