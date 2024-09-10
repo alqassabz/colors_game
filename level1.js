@@ -29,6 +29,11 @@ if(mode === "dark"){
   timer.style.color = "black"
   timer.style.backgroundColor = "white"
   h1.style.color = "white"
+  navbar.style.backgroundColor = "white"
+  navbarText.forEach((text)=>{
+  text.style.color= "black"
+  })
+  scoring.style.color = "white"
 }
 else if (mode === "light"){
   all.style.backgroundColor = "#F6F5F2"
@@ -39,7 +44,7 @@ else if (mode === "light"){
   navbarText.forEach((text)=>{
   text.style.color= "white"
   })
-
+  scoring.style.color = "black"
 }
 
 if(localStorage.getItem("blocksl1") === null){
@@ -160,6 +165,8 @@ const reset = () =>{
   game = 0
   time = 0
   count = 150
+  scoreVal = 0
+  scoring.innerText = "000"
   clearInterval(timerStart)
   timer.innerText = "0"
   lose.style.opacity = 0

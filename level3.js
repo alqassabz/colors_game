@@ -185,6 +185,8 @@ const reset = () =>{
   game = 0
   time = 30
   clearInterval(timerStart)
+  scoreVal = 0
+  scoring.innerText = "000"
   timer.innerText = "30"
   lose.style.opacity = 0
   lose.style.display = "none"

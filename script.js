@@ -156,7 +156,6 @@ const changeSize = () =>{
               })
               custombtn.style.backgroundColor="black"
               instruction.style.backgroundColor="black"
-              // starsClass.style.color = "black"
             
           }
           else if (mode === "dark"){
@@ -170,10 +169,9 @@ const changeSize = () =>{
             })
             custombtn.style.backgroundColor="white"
               instruction.style.backgroundColor="white"
-              // starsClass.style.color = "white"
           }
 
-          stars()
+          fallingShapes()
         }
 
 
@@ -224,7 +222,7 @@ const changeLevel =() =>{
           } else if (shape === "heart") {
             heart.style.backgroundColor = "blue";
           }
-          stars()
+          fallingShapes()
         }
       
 
@@ -371,7 +369,7 @@ light.addEventListener("click", ()=>{
 changeMode()
 
 
-function stars() {
+function fallingShapes() {
   let e = document.createElement("div");
   let size = Math.random() * 12;
   let duration = Math.random() * 3;
@@ -433,7 +431,7 @@ function stars() {
 }
 
 setInterval(function () {
-  stars();
+  fallingShapes();
 }, 100);
 
 

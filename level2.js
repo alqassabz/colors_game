@@ -159,6 +159,8 @@ const winning = () =>{
 const reset = () =>{
   game = 0
   time = 0
+  scoreVal = 0
+  scoring.innerText = "000"
   clearInterval(timerStart)
   timer.innerText = "0"
   lose.style.opacity = 0
