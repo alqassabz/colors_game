@@ -82,7 +82,6 @@ const makeSafeColor = (colorValue) => {
 }
 
 
-
 const changeBlockShape = () =>{
   if(localStorage.getItem("blocks-shape") === "circle"){
     slots.forEach((slot)=>{
@@ -129,6 +128,49 @@ const changeBlockShape = () =>{
           })
         }
 }
+
+const losing = () =>{
+  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
+        loseaudio.play();
+        setTimeout(() =>{
+          loseaudio.pause();
+      }, 2000)
+      loseaudio.currentTime = 0
+      lose.style.opacity = 1;
+      lose.style.display = "block"
+      lose.style.pointerEvents = "all";
+}
+
+const winning = () =>{
+  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
+        let rand = Math.floor(Math.random()*7)
+        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
+        winaudio.play();
+        setTimeout(() =>{
+          winaudio.pause();
+      }, 2000)
+      winaudio.currentTime = 0
+    win.style.opacity = 1;
+    win.style.pointerEvents = "all";
+}
+
+const reset = () =>{
+  game = 0
+  time = 0
+  count = 150
+  clearInterval(timerStart)
+  timer.innerText = "0"
+  lose.style.opacity = 0
+  lose.style.display = "none"
+  start.style.opacity = 1
+  start.style.display = "block"
+  slots.forEach((slot) =>{
+    slot.style.pointerEvents = "none"
+  })
+}
+
 
 // Function to handle color change
 const colorChange = () => {
@@ -188,48 +230,7 @@ const colorChange = () => {
 }
 
 
-const losing = () =>{
-  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
-        loseaudio.play();
-        setTimeout(() =>{
-          loseaudio.pause();
-      }, 2000)
-      loseaudio.currentTime = 0
-      lose.style.opacity = 1;
-      lose.style.display = "block"
-      lose.style.pointerEvents = "all";
-}
-
-const winning = () =>{
-  const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
-        winaudio.play();
-        setTimeout(() =>{
-          winaudio.pause();
-      }, 2000)
-      winaudio.currentTime = 0
-    win.style.opacity = 1;
-    win.style.pointerEvents = "all";
-}
-
-const reset = () =>{
-  game = 0
-  time = 0
-  count = 150
-  clearInterval(timerStart)
-  timer.innerText = "0"
-  lose.style.opacity = 0
-  lose.style.display = "none"
-  start.style.opacity = 1
-  start.style.display = "block"
-  slots.forEach((slot) =>{
-    slot.style.pointerEvents = "none"
-  })
-}
-
+changeBlockShape()
 
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
@@ -249,7 +250,7 @@ const reset = () =>{
     })
   })
 
-  changeBlockShape()
+
 
   
 

@@ -247,7 +247,14 @@ const colorChange = () => {
       })
     return;
   }
-};
+}
+
+
+
+changeBlockShape()
+
+
+
 
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
@@ -266,7 +273,7 @@ const colorChange = () => {
     })
   })
 
-  changeBlockShape()
+  
 
 // Start button click event
 button.addEventListener("click", colorChange);

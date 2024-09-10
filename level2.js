@@ -57,7 +57,6 @@ for (let i = 1; i <= parseInt(localStorage.getItem("blocksl2")); i++) {
   else if (parseInt(localStorage.getItem("blocksl2")) === 30){ 
     cont.style.gridTemplateColumns = `repeat(6, 52px)`
   }
-  
   const div = document.createElement("div");
   div.classList.add("slots");
   if (i === random) {
@@ -226,7 +225,7 @@ const colorChange = () => {
 }
 
 
-
+changeBlockShape()
 
 
   slots.forEach((slot) => {
@@ -246,7 +245,7 @@ const colorChange = () => {
     })
   })
 
-  changeBlockShape()
+  
 
 
 
