@@ -171,13 +171,20 @@ const winning = () =>{
 const losing = () => {
   const square = String.fromCharCode(9633); 
   const fullSquare = String.fromCharCode(9632); 
+  const circle = String.fromCharCode(9675); 
+  const fullCircle = String.fromCharCode(9679); 
+  const star = String.fromCharCode(9734); 
+  const fullStar = String.fromCharCode(9733); 
+  const heart = String.fromCharCode(9825); 
+  const fullHeart = String.fromCharCode(9829); 
   
+
   let life1 = document.querySelector("#life1");
   let life2 = document.querySelector("#life2");
   let life3 = document.querySelector("#life3");
 
   // Check if all lives are empty, indicating a loss
-  if (life1.innerText === square && life2.innerText === square && life3.innerText === square) {
+  if (life2.innerText === square || life2.innerText === circle || life2.innerText === star  || life2.innerText === heart)  {
     const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"];
     let rand = Math.floor(Math.random() * lossaudios.length);
     const loseaudio = new Audio(`sounds/${lossaudios[rand]}`);
@@ -187,9 +194,27 @@ const losing = () => {
       loseaudio.currentTime = 0; 
       
     });
+    if(localStorage.getItem("blocks-shape") === "square"){
     life1.innerText = fullSquare
     life2.innerText = fullSquare
     life3.innerText = fullSquare
+    }
+    if(localStorage.getItem("blocks-shape") === "circle"){
+    life1.innerText = fullCircle
+    life2.innerText = fullCircle
+    life3.innerText = fullCircle
+    }
+    if(localStorage.getItem("blocks-shape") === "heart"){
+    life1.innerText = fullHeart
+    life2.innerText = fullHeart
+    life3.innerText = fullHeart
+    }
+    if(localStorage.getItem("blocks-shape") === "star"){
+    life1.innerText = fullStar
+    life2.innerText = fullStar
+    life3.innerText = fullStar
+    }
+
     lose.style.opacity = 1;
     lose.style.display = "block";
     lose.style.pointerEvents = "all";
@@ -207,6 +232,30 @@ const losing = () => {
     life2.innerText = square; // Lose second life
   } else if (life1.innerText === fullSquare) {
     life1.innerText = square; // Lose first life
+  }
+
+  if (life1.innerText === fullStar && life2.innerText === fullStar && life3.innerText === fullStar) {
+    life3.innerText = star; // Lose third life
+  } else if (life1.innerText === fullStar && life2.innerText === fullStar) {
+    life2.innerText = star; // Lose second life
+  } else if (life1.innerText === fullStar) {
+    life1.innerText = star; // Lose first life
+  }
+
+  if (life1.innerText === fullHeart && life2.innerText === fullHeart && life3.innerText === fullHeart) {
+    life3.innerText = heart; // Lose third life
+  } else if (life1.innerText === fullHeart && life2.innerText === fullHeart) {
+    life2.innerText = heart; // Lose second life
+  } else if (life1.innerText === fullHeart) {
+    life1.innerText = heart; // Lose first life
+  }
+
+  if (life1.innerText === fullCircle && life2.innerText === fullCircle && life3.innerText === fullCircle) {
+    life3.innerText = circle; // Lose third life
+  } else if (life1.innerText === fullCircle && life2.innerText === fullCircle) {
+    life2.innerText = circle; // Lose second life
+  } else if (life1.innerText === fullCircle) {
+    life1.innerText = circle; // Lose first life
   }
 };
 
