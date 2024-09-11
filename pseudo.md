@@ -51,7 +51,8 @@
     - [X] commit 17 (fixed issue with shapes customization)
     - [X] commit 18 (fixed structure oof code)
     - [X] commit 19 (fixed class namings and light mode color changes)
-    
+    - [X] commit 20 (updated psuedo code)
+
 
 
 
@@ -69,17 +70,17 @@
 
 ## STEP 3 (POST-MVP IDEAS):
 
-- [ ] There must be a **DARK MODE** toggler -> **DEFAULT MODE** will be **LIGHT**
+- [X] There must be a **DARK MODE** toggler -> **DEFAULT MODE** will be **LIGHT**
 
-- [ ] Any additional **CUSTOMIZATION** such as **TYPE** (colors, numbers, letters, etc.)
+- [X] Any additional **CUSTOMIZATION** such as **TYPE** (colors, numbers, letters, etc.)
 
-- [ ] **SAVE** the **"level"** which the user reached **EVEN IF** they **EXIT** the browser
+- [X] **SAVE** the **"level"** which the user reached **EVEN IF** they **EXIT** the browser
 
 ### EXTRA SUGGESTIONS:
 
 - [ ] **OOP**
 
-- [ ] **Google Fonts**
+- [X] **Google Fonts**
 
 ## STEP 4 (MAIN GAME RULES):
 
@@ -122,11 +123,7 @@
 
 
 
-<!-- TO KEEP TRACK OF COLORS:
-
-// console.log(`For normal ==> rgb(${r}, ${g}, ${b})`);
-  // console.log(`For diff ==> ${diff.style.backgroundColor}`);
-
+<!-- RESOURCES USED:
 
   https://www.geeksforgeeks.org/how-to-check-the-given-element-has-the-specified-class-in-javascript/
 

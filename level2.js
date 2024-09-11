@@ -19,25 +19,6 @@ let scoring = document.querySelector(".scoring")
 let scoreVal = 0
 
 
-let mode = localStorage.getItem("mode")
-if(mode === "dark"){
-  all.style.backgroundColor = "black"
-  timer.style.color = "black"
-  timer.style.backgroundColor = "white"
-  h1.style.color = "white"
-}
-else if (mode === "light"){
-  all.style.backgroundColor = "#F6F5F2"
-  timer.style.color = "white"
-  timer.style.backgroundColor = "black"
-  h1.style.color = "black"
-  navbar.style.backgroundColor = "black"
-  navbarText.forEach((text)=>{
-  text.style.color= "white"
-  })
-
-}
-
 
 if (localStorage.getItem("complete1") === "true")
   {
@@ -80,6 +61,32 @@ const makeSafeColor = (colorValue) => {
   return colorValue
 }
 
+const changeMode = () =>{
+  let mode = localStorage.getItem("mode")
+if(mode === "dark"){
+  all.style.backgroundColor = "black"
+  timer.style.color = "black"
+  timer.style.backgroundColor = "white"
+  h1.style.color = "white"
+  navbar.style.backgroundColor = "white"
+  navbarText.forEach((text)=>{
+  text.style.color= "black"
+  })
+  scoring.style.color = "white"
+}
+else if (mode === "light"){
+  all.style.backgroundColor = "#F6F5F2"
+  timer.style.color = "white"
+  timer.style.backgroundColor = "black"
+  h1.style.color = "black"
+  navbar.style.backgroundColor = "black"
+  navbarText.forEach((text)=>{
+  text.style.color= "white"
+  })
+  scoring.style.color = "black"
+}
+
+}
 
 const changeBlockShape = () =>{
   if(localStorage.getItem("blocks-shape") === "circle"){
@@ -218,9 +225,16 @@ const colorChange = () => {
     localStorage.setItem("complete2", "true")
     winning()
     clearInterval(timerStart)
-    let done = win.querySelector(".donebtn");  
+    let done = win.querySelector(".donebtn"); 
+    let again1 = win.querySelector(".againbtn1") 
       done.addEventListener("click", () => { 
         location.href="level3.html"
+      })
+
+      again1.addEventListener("click", ()=>{
+        reset()
+        win.style.display = "none"
+        win.style.opacity = 0
       })
     return;
   }
@@ -228,6 +242,7 @@ const colorChange = () => {
 
 
 changeBlockShape()
+changeMode()
 
 
   slots.forEach((slot) => {

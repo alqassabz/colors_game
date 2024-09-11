@@ -42,7 +42,7 @@ function fallingShapes() {
   let size = Math.random() * 12;
   let duration = Math.random() * 3;
 
-  e.setAttribute("class", "star");
+  e.setAttribute("id", "fallingShape");
   document.body.appendChild(e);
 
   e.style.left = Math.random() * +innerWidth + "px";
@@ -67,8 +67,8 @@ function fallingShapes() {
   for (let i = 0; i < stylesheet.cssRules.length; i++) {
     const rule = stylesheet.cssRules[i];
 
-    // Check for the rule that defines the .star::before selector
-    if (rule.selectorText === ".star::before") {
+    // Check for the rule that defines the #fallingShape::before selector
+    if (rule.selectorText === "#fallingShape::before") {
       ruleFound = true;
       const shape = localStorage.getItem("blocks-shape");
       if (shape === "circle") {
@@ -91,10 +91,6 @@ function fallingShapes() {
     }
     
 
-  }
-
-  if (!ruleFound) {
-    console.error('CSS rule .star::before not found');
   }
 }
 
