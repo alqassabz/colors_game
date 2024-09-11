@@ -20,6 +20,7 @@ let scoreVal = 0
 const life1 = document.querySelector("#life1");
 const life2 = document.querySelector("#life2");
 const life3 = document.querySelector("#life3");
+const loseLife = new Audio('sounds/loseLife.wav')
 
 
 if (localStorage.getItem("complete1") === "true")
@@ -221,34 +222,58 @@ const losing = () => {
   // Update lives logic: lose one life at a time
   if (life1.innerText === fullSquare && life2.innerText === fullSquare && life3.innerText === fullSquare) {
     life3.innerText = square; // Lose third life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullSquare && life2.innerText === fullSquare) {
     life2.innerText = square; // Lose second life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullSquare) {
     life1.innerText = square; // Lose first life
+    loseLife.currentTime = 0
+    loseLife.play()
   }
 
   if (life1.innerText === fullStar && life2.innerText === fullStar && life3.innerText === fullStar) {
     life3.innerText = star; // Lose third life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullStar && life2.innerText === fullStar) {
     life2.innerText = star; // Lose second life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullStar) {
     life1.innerText = star; // Lose first life
+    loseLife.currentTime = 0
+    loseLife.play()
   }
 
   if (life1.innerText === fullHeart && life2.innerText === fullHeart && life3.innerText === fullHeart) {
     life3.innerText = heart; // Lose third life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullHeart && life2.innerText === fullHeart) {
     life2.innerText = heart; // Lose second life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullHeart) {
     life1.innerText = heart; // Lose first life
+    loseLife.currentTime = 0
+    loseLife.play()
   }
 
   if (life1.innerText === fullCircle && life2.innerText === fullCircle && life3.innerText === fullCircle) {
     life3.innerText = circle; // Lose third life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullCircle && life2.innerText === fullCircle) {
     life2.innerText = circle; // Lose second life
+    loseLife.currentTime = 0
+    loseLife.play()
   } else if (life1.innerText === fullCircle) {
     life1.innerText = circle; // Lose first life
+    loseLife.currentTime = 0
+    loseLife.play()
   }
 };
 
