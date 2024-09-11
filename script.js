@@ -58,7 +58,6 @@ function fallingShapes() {
       
   // Check if the stylesheet is accessible
   if (!stylesheet) {
-    console.error('Stylesheet not found');
     return;
   }
 

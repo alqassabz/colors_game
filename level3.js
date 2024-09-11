@@ -301,7 +301,6 @@ const countdownTimer = () =>{
     if(parseInt(timer.innerText) === 0 ){
       audio.pause()
       over.play()
-      console.log("time over")
       lose.style.opacity = 1;
           lose.style.pointerEvents = "all";
           clearInterval(timerStart)
@@ -368,7 +367,6 @@ const colorChange = () => {
 
   // Check if the game has reached its end 
   if (count <= 0) {
-    console.log("We reached zero");
     return
   }
 

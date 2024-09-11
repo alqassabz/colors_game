@@ -357,7 +357,6 @@ const colorChange = () => {
 
   // Check if the game has reached its end 
   if (count <= 0) {
-    console.log("We reached zero");
     return
   }
 
@@ -369,7 +368,6 @@ const colorChange = () => {
     let done = win.querySelector(".donebtn");  
     let again1 = win.querySelector(".againbtn1"); 
       done.addEventListener("click", () => {
-        console.log("Did it")
         location.href="level2.html"
       })
 

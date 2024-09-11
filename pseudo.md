@@ -25,13 +25,13 @@
 
 - [X] **Must use flexbox or grid**
 
-- [XXX] **At least 2 HTML pages + navigation**
+- [X] **At least 2 HTML pages + navigation**
   - Refer to STEP 1
 
-- [XXX] **At least 2 event handlers**
+- [X] **At least 2 event handlers**
   - The user should be able to click on one of the blocks (which they see as different). If it is correct, a new set of blocks will appear.
 
-- [ ] **At least 20 meaningful git commits**
+- [X] **At least 20 meaningful git commits**
     - [X] commit 1 (readMe and psuedo)
     - [X] commit 2 (main board and functionalities)
     - [X] commit 3 (created all pages)
@@ -52,6 +52,11 @@
     - [X] commit 18 (fixed structure oof code)
     - [X] commit 19 (fixed class namings and light mode color changes)
     - [X] commit 20 (updated psuedo code)
+    - [X] commit 21 (fix all issues with main functionality and mode)
+    - [X] commit 22 (added custom lives)
+    - [X] commit 23 (added 3 lives in each level)
+    - [X] commit 24 (fixed dark mode and lives)
+    - [X] commit 25 (added sound effects for losing lives)
 
 
 
@@ -78,19 +83,17 @@
 
 ### EXTRA SUGGESTIONS:
 
-- [ ] **OOP**
-
 - [X] **Google Fonts**
 
 ## STEP 4 (MAIN GAME RULES):
 
 - [X] The game will **START** at **Level 1**.
 
-- [XXX] **Level 2** will be **UNLOCKED** when **Level 1 is COMPLETED**.
+- [X] **Level 2** will be **UNLOCKED** when **Level 1 is COMPLETED**.
 
-- [XXX] **Level 3** will be **UNLOCKED** when **Level 2 is COMPLETED**.
+- [X] **Level 3** will be **UNLOCKED** when **Level 2 is COMPLETED**.
 
-- [XXX] There must be **DIFFERENT COLORS** every time **(NOT HARDCODED OR PRE-DEFINED)**.
+- [X] There must be **DIFFERENT COLORS** every time **(NOT HARDCODED OR PRE-DEFINED)**.
 
   - use ***Math random*** to generate a new color everytime
   - *Generate 3 numbers* ranging *from 0 to 255* and *assign each of them to a color* (red, green, blue)
