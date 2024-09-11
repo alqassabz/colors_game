@@ -93,15 +93,30 @@ else if (mode === "light"){
 }
 
 const changeBlockShape = () =>{
+        const life1 = document.querySelector("#life1");
+        const life2 = document.querySelector("#life2");
+        const life3 = document.querySelector("#life3");
+        const fullSquare = String.fromCharCode(9632)
+        const fullCircle = String.fromCharCode(9679)
+        const fullStar = String.fromCharCode(9733)
+        const fullHeart = String.fromCharCode(9829)
   if(localStorage.getItem("blocks-shape") === "circle"){
+    
     slots.forEach((slot)=>{
       slot.style.borderRadius="50px"
     })
+    life1.textContent = fullCircle
+    life2.textContent = fullCircle
+    life3.textContent = fullCircle
+    
     }
     else if(localStorage.getItem("blocks-shape") === "square"){
       slots.forEach((slot)=>{
         slot.style.borderRadius="none"
       })
+      life1.innerText = fullSquare
+      life2.innerText = fullSquare
+      life3.innerText = fullSquare
       }
     else if(localStorage.getItem("blocks-shape") === "star"){
         slots.forEach((slot)=>{
@@ -118,6 +133,9 @@ const changeBlockShape = () =>{
             39% 35%
           )`
         })
+        life1.innerText = fullStar
+        life2.innerText = fullStar
+        life3.innerText = fullStar
         }
         else if(localStorage.getItem("blocks-shape") === "heart"){
           slots.forEach((slot)=>{
@@ -136,22 +154,54 @@ const changeBlockShape = () =>{
           39% 10%
         )`
           })
+          life1.textContent = fullHeart
+          life2.innerText = fullHeart
+          life3.innerText = fullHeart
         }
 }
 
-const losing = () =>{
-  const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const loseaudio = new Audio(`sounds/${lossaudios[rand]}`)
-        loseaudio.play();
-        setTimeout(() =>{
-          loseaudio.pause();
-      }, 2000)
-      loseaudio.currentTime = 0
-      lose.style.opacity = 1;
-      lose.style.display = "block"
-      lose.style.pointerEvents = "all";
-}
+const losing = () => {
+  const square = String.fromCharCode(9633); 
+  const fullSquare = String.fromCharCode(9632); 
+  
+  let life1 = document.querySelector("#life1");
+  let life2 = document.querySelector("#life2");
+  let life3 = document.querySelector("#life3");
+
+  // Check if all lives are empty, indicating a loss
+  if (life1.innerText === square && life2.innerText === square && life3.innerText === square) {
+    const lossaudios = ["lose1.mp3", "lose2.mp3", "lose3.mp3", "lose4.mp3", "lose5.mp3", "lose6.mp3", "lose7.mp3"];
+    let rand = Math.floor(Math.random() * lossaudios.length);
+    const loseaudio = new Audio(`sounds/${lossaudios[rand]}`);
+    
+    loseaudio.play();
+    loseaudio.addEventListener('ended', () => {
+      loseaudio.currentTime = 0; 
+      
+    });
+    life1.innerText = fullSquare
+    life2.innerText = fullSquare
+    life3.innerText = fullSquare
+    lose.style.opacity = 1;
+    lose.style.display = "block";
+    lose.style.pointerEvents = "all";
+    
+    clearInterval(timerStart); // Stop the timer
+    scoreVal = 0; // Reset score
+    scoring.innerText = "000";
+    return; // Exit the function after a loss
+  }
+
+  // Update lives logic: lose one life at a time
+  if (life1.innerText === fullSquare && life2.innerText === fullSquare && life3.innerText === fullSquare) {
+    life3.innerText = square; // Lose third life
+  } else if (life1.innerText === fullSquare && life2.innerText === fullSquare) {
+    life2.innerText = square; // Lose second life
+  } else if (life1.innerText === fullSquare) {
+    life1.innerText = square; // Lose first life
+  }
+};
+
 
 const winning = () =>{
   const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
@@ -218,7 +268,10 @@ const colorChange = () => {
   if (diff) {
     diff.style.backgroundColor = `rgb(${makeSafeColor(r + count)}, ${makeSafeColor(g + count)}, ${makeSafeColor(b + count)})`;
     // Add the event listener for the new diff block
-    diff.addEventListener("click", colorChange);
+    diff.addEventListener("click", ()=>{
+      losing()
+      colorChange()
+  });
   }
 
   // Check if the game has reached its end 
@@ -263,9 +316,6 @@ changeMode()
       }
       else{
         losing()
-      clearInterval(timerStart)
-      scoreVal = 0
-      scoring.innerText = "000"
       }
     })
   })

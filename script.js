@@ -285,22 +285,29 @@ const changeLevel =() =>{
         updateSelected()
         }
       }
+      
       const changeShape = () => {
         square.style.backgroundColor ="aqua"
         star.style.backgroundColor = "aqua"
         heart.style.backgroundColor = "aqua"
         circle.style.backgroundColor = "aqua"
+        
       
         // Set background colors based on localStorage value
           const shape = localStorage.getItem("blocks-shape");
           if (shape === "circle") {
             circle.style.backgroundColor = "blue";
+
           } else if (shape === "square") {
             square.style.backgroundColor = "blue";
+            
+
           } else if (shape === "star") {
             star.style.backgroundColor = "blue";
+
           } else if (shape === "heart") {
             heart.style.backgroundColor = "blue";
+
           }
           fallingShapes()
         }
