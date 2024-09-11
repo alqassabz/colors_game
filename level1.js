@@ -21,7 +21,9 @@ const navbar = document.querySelector(".navbar")
 const navbarText = document.querySelectorAll(".navbar a")
 let scoring = document.querySelector(".scoring")
 let scoreVal = 0
-
+const life1 = document.querySelector("#life1");
+const life2 = document.querySelector("#life2");
+const life3 = document.querySelector("#life3");
 
 
 
@@ -75,6 +77,9 @@ if(mode === "dark"){
   navbar.style.backgroundColor = "white"
   navbarText.forEach((text)=>{
   text.style.color= "black"
+  life1.style.color = "white"
+  life2.style.color = "white"
+  life3.style.color = "white"
   })
   scoring.style.color = "white"
 }
@@ -86,6 +91,9 @@ else if (mode === "light"){
   navbar.style.backgroundColor = "black"
   navbarText.forEach((text)=>{
   text.style.color= "white"
+  life1.style.color = "black"
+  life2.style.color = "black"
+  life2.style.color = "black"
   })
   scoring.style.color = "black"
 }
@@ -93,13 +101,10 @@ else if (mode === "light"){
 }
 
 const changeBlockShape = () =>{
-        const life1 = document.querySelector("#life1");
-        const life2 = document.querySelector("#life2");
-        const life3 = document.querySelector("#life3");
-        const fullSquare = String.fromCharCode(9632)
-        const fullCircle = String.fromCharCode(9679)
-        const fullStar = String.fromCharCode(9733)
-        const fullHeart = String.fromCharCode(9829)
+const fullSquare = String.fromCharCode(9632)
+const fullCircle = String.fromCharCode(9679)
+const fullStar = String.fromCharCode(9733)
+const fullHeart = String.fromCharCode(9829)
   if(localStorage.getItem("blocks-shape") === "circle"){
     
     slots.forEach((slot)=>{
@@ -318,7 +323,6 @@ const colorChange = () => {
     diff.style.backgroundColor = `rgb(${makeSafeColor(r + count)}, ${makeSafeColor(g + count)}, ${makeSafeColor(b + count)})`;
     // Add the event listener for the new diff block
     diff.addEventListener("click", ()=>{
-      losing()
       colorChange()
   });
   }
