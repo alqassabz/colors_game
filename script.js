@@ -35,7 +35,68 @@ if(localStorage.getItem("mode") === null){
 }
 
 
+/// DESIGN
 
+function fallingShapes() {
+  let e = document.createElement("div");
+  let size = Math.random() * 12;
+  let duration = Math.random() * 3;
+
+  e.setAttribute("class", "star");
+  document.body.appendChild(e);
+
+  e.style.left = Math.random() * +innerWidth + "px";
+  e.style.fontSize = 12 + size + "px";
+  e.style.animationDuration = 4 + duration + "s";
+
+  setTimeout(function () {
+    document.body.removeChild(e);
+  }, 5000);
+
+  // Get the stylesheet
+  const stylesheet = document.styleSheets[0]; // This assumes the first stylesheet in the document
+      
+  // Check if the stylesheet is accessible
+  if (!stylesheet) {
+    console.error('Stylesheet not found');
+    return;
+  }
+
+  // Loop through all CSS rules
+  let ruleFound = false;
+  for (let i = 0; i < stylesheet.cssRules.length; i++) {
+    const rule = stylesheet.cssRules[i];
+
+    // Check for the rule that defines the .star::before selector
+    if (rule.selectorText === ".star::before") {
+      ruleFound = true;
+      const shape = localStorage.getItem("blocks-shape");
+      if (shape === "circle") {
+        rule.style.content = '"\\f111"'; 
+      } else if (shape === "square") {
+        rule.style.content = '"\\f0c8"'; 
+      } else if (shape === "star") {
+        rule.style.content = '"\\f005"'; 
+      } else if (shape === "heart") {
+        rule.style.content = '"\\f004"'; 
+      }
+      let mode= localStorage.getItem("mode")
+    if(mode === "light"){
+      rule.style.color = "black"
+    }
+    else if (mode === "dark"){
+      rule.style.color = "white"
+    }
+      break; // Exit loop once the rule is found
+    }
+    
+
+  }
+
+  if (!ruleFound) {
+    console.error('CSS rule .star::before not found');
+  }
+}
 
 // INSTRUCTIONS
 
@@ -98,6 +159,29 @@ const updateSelected = () =>{
     }
   }
 }
+
+const updateBlocks = () =>{
+  if(localStorage.getItem("level") === "1"){
+    blockNum1.innerText = "9 Blocks"
+    blockNum2.innerText = "12 Blocks"
+    blockNum3.innerText = "16 Blocks"
+    }
+    else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
+      if(localStorage.getItem("blocks") === "9"){
+        localStorage.setItem("blocks", "20")
+      }
+      else if(localStorage.getItem("blocks") === "12"){
+        localStorage.setItem("blocks", "25")
+      }
+      else if(localStorage.getItem("blocks") === "16"){
+        localStorage.setItem("blocks", "30")
+      }
+      blockNum1.innerText = "20 Blocks"
+      blockNum2.innerText = "25 Blocks"
+      blockNum3.innerText = "30 Blocks"
+      }
+}
+
 
 
 
@@ -224,6 +308,7 @@ const changeLevel =() =>{
           }
           fallingShapes()
         }
+
       
 
 
@@ -260,29 +345,6 @@ heart.addEventListener("click", ()=>{
 })
 
 
-const updateBlocks = () =>{
-  if(localStorage.getItem("level") === "1"){
-    blockNum1.innerText = "9 Blocks"
-    blockNum2.innerText = "12 Blocks"
-    blockNum3.innerText = "16 Blocks"
-    }
-    else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
-      if(localStorage.getItem("blocks") === "9"){
-        localStorage.setItem("blocks", "20")
-      }
-      else if(localStorage.getItem("blocks") === "12"){
-        localStorage.setItem("blocks", "25")
-      }
-      else if(localStorage.getItem("blocks") === "16"){
-        localStorage.setItem("blocks", "30")
-      }
-      blockNum1.innerText = "20 Blocks"
-      blockNum2.innerText = "25 Blocks"
-      blockNum3.innerText = "30 Blocks"
-      }
-}
-
-
 level1.addEventListener("click", ()=>{
   localStorage.setItem("level", "1")
   changeLevel()
@@ -296,7 +358,6 @@ level3.addEventListener("click", ()=>{
   localStorage.setItem("level", "3")
   changeLevel()
 })
-
 
 
 blockNum1.addEventListener("click", ()=>{
@@ -315,7 +376,6 @@ blockNum1.addEventListener("click", ()=>{
     localStorage.setItem("blocksl3", "20")
     }
 })
-
 
 
 blockNum2.addEventListener("click", ()=>{
@@ -369,66 +429,7 @@ light.addEventListener("click", ()=>{
 changeMode()
 
 
-function fallingShapes() {
-  let e = document.createElement("div");
-  let size = Math.random() * 12;
-  let duration = Math.random() * 3;
 
-  e.setAttribute("class", "star");
-  document.body.appendChild(e);
-
-  e.style.left = Math.random() * +innerWidth + "px";
-  e.style.fontSize = 12 + size + "px";
-  e.style.animationDuration = 4 + duration + "s";
-
-  setTimeout(function () {
-    document.body.removeChild(e);
-  }, 5000);
-
-  // Get the stylesheet
-  const stylesheet = document.styleSheets[0]; // This assumes the first stylesheet in the document
-      
-  // Check if the stylesheet is accessible
-  if (!stylesheet) {
-    console.error('Stylesheet not found');
-    return;
-  }
-
-  // Loop through all CSS rules
-  let ruleFound = false;
-  for (let i = 0; i < stylesheet.cssRules.length; i++) {
-    const rule = stylesheet.cssRules[i];
-
-    // Check for the rule that defines the .star::before selector
-    if (rule.selectorText === ".star::before") {
-      ruleFound = true;
-      const shape = localStorage.getItem("blocks-shape");
-      if (shape === "circle") {
-        rule.style.content = '"\\f111"'; 
-      } else if (shape === "square") {
-        rule.style.content = '"\\f0c8"'; 
-      } else if (shape === "star") {
-        rule.style.content = '"\\f005"'; 
-      } else if (shape === "heart") {
-        rule.style.content = '"\\f004"'; 
-      }
-      let mode= localStorage.getItem("mode")
-    if(mode === "light"){
-      rule.style.color = "black"
-    }
-    else if (mode === "dark"){
-      rule.style.color = "white"
-    }
-      break; // Exit loop once the rule is found
-    }
-    
-
-  }
-
-  if (!ruleFound) {
-    console.error('CSS rule .star::before not found');
-  }
-}
 
 setInterval(function () {
   fallingShapes();

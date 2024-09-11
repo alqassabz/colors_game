@@ -41,6 +41,19 @@
     - [X] commit 7 (countdown timer + play again)
     - [X] commit 8 (added sounds for losing and winning)
     - [X] commit 9 (added shape customization)
+    - [X] commit 10 (added extra customizations)
+    - [X] commit 11 (added num of blocks customization)
+    - [X] commit 12 (linked customizations with all levels)
+    - [X] commit 13 (fixed the function for changing block numbers when level is changed)
+    - [X] commit 14 (added light/dark modes)
+    - [X] commit 15 (styled buttons for the whole game)
+    - [X] commit 16 (added scoreboard)
+    - [X] commit 17 (fixed issue with shapes customization)
+    - [X] commit 18 (fixed structure oof code)
+    - [X] commit 19 (fixed class namings and light mode color changes)
+    
+
+
 
 - [ ] **Code indented, spaced, and within code blocks**
 
