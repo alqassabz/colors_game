@@ -161,97 +161,100 @@ const updateBlocks = () =>{
     blockNum2.innerText = "12 Blocks"
     blockNum3.innerText = "16 Blocks"
     }
-    else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
-      if(localStorage.getItem("blocks") === "9"){
-        localStorage.setItem("blocks", "20")
-      }
-      else if(localStorage.getItem("blocks") === "12"){
-        localStorage.setItem("blocks", "25")
-      }
-      else if(localStorage.getItem("blocks") === "16"){
-        localStorage.setItem("blocks", "30")
-      }
-      blockNum1.innerText = "20 Blocks"
-      blockNum2.innerText = "25 Blocks"
-      blockNum3.innerText = "30 Blocks"
-      }
+  else if(localStorage.getItem("level") === "2" ||localStorage.getItem("level") === "3" ){
+    if(localStorage.getItem("blocks") === "9"){
+      localStorage.setItem("blocks", "20")
+    }
+    else if(localStorage.getItem("blocks") === "12"){
+      localStorage.setItem("blocks", "25")
+    }
+    else if(localStorage.getItem("blocks") === "16"){
+      localStorage.setItem("blocks", "30")
+    }
+    blockNum1.innerText = "20 Blocks"
+    blockNum2.innerText = "25 Blocks"
+    blockNum3.innerText = "30 Blocks"
+    }
 }
 
 
 
-
 const changeSize = () =>{
-    if( localStorage.getItem("level") === "1" ){
-        if(localStorage.getItem("blocksl1") === "9"){
-            blockNum1.style.backgroundColor = "lightgreen"
-        }
-        else if (localStorage.getItem("blocksl1") === "12") {
-          blockNum2.style.backgroundColor = "lightgreen"
-        }
-        else {
-          blockNum3.style.backgroundColor = "lightreen"
-        }
-      }
+  blockNum1.style.backgroundColor = "green"
+  blockNum2.style.backgroundColor = "green"
+  blockNum3.style.backgroundColor = "green"
+  if( localStorage.getItem("level") === "1" ){
+
+    if(localStorage.getItem("blocksl1") === "9"){
+        blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if (localStorage.getItem("blocksl1") === "12") {
+      blockNum2.style.backgroundColor = "lightgreen"
+    }
+    else {
+      blockNum3.style.backgroundColor = "lightreen"
+    }
+  }
 
 
 
-    else if( localStorage.getItem("level") === "2" ){
-          if(localStorage.getItem("blocksl2") === "20"){
-              blockNum1.style.backgroundColor = "lightgreen"
-          }
-          else if (localStorage.getItem("blocksl2") === "25") {
-            blockNum2.style.backgroundColor = "lightgreen"
-          }
-          else {
-            blockNum3.style.backgroundColor = "lightgreen"
-          }
-        
-          }
-
-          else{
-            if(localStorage.getItem("blocksl3") === "20"){
-              blockNum1.style.backgroundColor = "lightgreen"
-          }
-          else if (localStorage.getItem("blocksl3") === "25") {
-            blockNum2.style.backgroundColor = "lightgreen"
-          }
-          else{
-            blockNum3.style.backgroundColor = "lightgreen"
-          }
-          }
-        }
+  else if( localStorage.getItem("level") === "2" ){
+    if(localStorage.getItem("blocksl2") === "20"){
+        blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if (localStorage.getItem("blocksl2") === "25") {
+      blockNum2.style.backgroundColor = "lightgreen"
+    }
+    else {
+      blockNum3.style.backgroundColor = "lightgreen"
+    }
+    }
 
 
-        const changeMode = () =>{
-          let mode = localStorage.getItem("mode")
-          if(mode === "light"){
-              all.style.backgroundColor = "#F6F5F2"
-              dark.style.backgroundColor = "darkviolet"
-              light.style.backgroundColor = `rgb(215, 141, 243)`
-              h1.style.color = "black"
-              navbar.style.backgroundColor = "black"
-              navbarText.forEach((text)=>{
-                text.style.color= "white"
-              })
-              custombtn.style.backgroundColor="black"
-              instruction.style.backgroundColor="black"
-            
-          }
-          else if (mode === "dark"){
-            all.style.backgroundColor = "black"
-            light.style.backgroundColor = "darkviolet"
-            dark.style.backgroundColor = `rgb(215, 141, 243)`
-            h1.style.color = "white"
-            navbar.style.backgroundColor = "white"
-            navbarText.forEach((text)=>{
-              text.style.color= "black"
-            })
-            custombtn.style.backgroundColor="white"
-              instruction.style.backgroundColor="white"
-          }
+  else{
+    if(localStorage.getItem("blocksl3") === "20"){
+      blockNum1.style.backgroundColor = "lightgreen"
+    }
+    else if (localStorage.getItem("blocksl3") === "25") {
+      blockNum2.style.backgroundColor = "lightgreen"
+    }
+    else{
+      blockNum3.style.backgroundColor = "lightgreen"
+    }
+  }
+}
 
-          fallingShapes()
-        }
+
+const changeMode = () =>{
+  let mode = localStorage.getItem("mode")
+  if(mode === "light"){
+      all.style.backgroundColor = "#F6F5F2"
+      dark.style.backgroundColor = "darkviolet"
+      light.style.backgroundColor = `rgb(215, 141, 243)`
+      h1.style.color = "black"
+      navbar.style.backgroundColor = "black"
+      navbarText.forEach((text)=>{
+        text.style.color= "white"
+      })
+      custombtn.style.backgroundColor="black"
+      instruction.style.backgroundColor="black"
+    
+  }
+  else if (mode === "dark"){
+    all.style.backgroundColor = "black"
+    light.style.backgroundColor = "darkviolet"
+    dark.style.backgroundColor = `rgb(215, 141, 243)`
+    h1.style.color = "white"
+    navbar.style.backgroundColor = "white"
+    navbarText.forEach((text)=>{
+      text.style.color= "black"
+    })
+    custombtn.style.backgroundColor="white"
+      instruction.style.backgroundColor="white"
+  }
+
+  fallingShapes()
+}
 
 
 const changeLevel =() =>{
@@ -259,57 +262,56 @@ const changeLevel =() =>{
   level1.style.backgroundColor = "red"
   level2.style.backgroundColor = "red"
   level3.style.backgroundColor = "red"
-    if(level === "1"){
-        level1.style.backgroundColor = "lightpink"
-        blockNum1.innerText = "9 Blocks"
-        blockNum2.innerText = "12 Blocks"
-        blockNum3.innerText = "16 Blocks"
-        localStorage.setItem("blocksl1", "9");
-        updateSelected()
-      }
-    else if(level === "2"){
-        level2.style.backgroundColor = "lightpink"
-        blockNum1.innerText = "20 Blocks"
-        blockNum2.innerText = "25 Blocks"
-        blockNum3.innerText = "30 Blocks"
-        localStorage.setItem("blocksl2", "20");
-        updateSelected()
-        }
-    else if(level === "3"){
-        level3.style.backgroundColor = "lightpink"
-        blockNum1.innerText = "20 Blocks"
-        blockNum2.innerText = "25 Blocks"
-        blockNum3.innerText = "30 Blocks"
-        localStorage.setItem("blocksl3", "20");
-        updateSelected()
-        }
-      }
+  if(level === "1"){
+    level1.style.backgroundColor = "lightpink"
+    blockNum1.innerText = "9 Blocks"
+    blockNum2.innerText = "12 Blocks"
+    blockNum3.innerText = "16 Blocks"
+    localStorage.setItem("blocksl1", "9");
+    updateSelected()
+  }
+  else if(level === "2"){
+    level2.style.backgroundColor = "lightpink"
+    blockNum1.innerText = "20 Blocks"
+    blockNum2.innerText = "25 Blocks"
+    blockNum3.innerText = "30 Blocks"
+    localStorage.setItem("blocksl2", "20");
+    updateSelected()
+  }
+  else if(level === "3"){
+    level3.style.backgroundColor = "lightpink"
+    blockNum1.innerText = "20 Blocks"
+    blockNum2.innerText = "25 Blocks"
+    blockNum3.innerText = "30 Blocks"
+    localStorage.setItem("blocksl3", "20");
+    updateSelected()
+  }
+}
       
-      const changeShape = () => {
-        square.style.backgroundColor ="aqua"
-        star.style.backgroundColor = "aqua"
-        heart.style.backgroundColor = "aqua"
-        circle.style.backgroundColor = "aqua"
-        
-      
-        // Set background colors based on localStorage value
-          const shape = localStorage.getItem("blocks-shape");
-          if (shape === "circle") {
-            circle.style.backgroundColor = "blue";
+const changeShape = () => {
+square.style.backgroundColor ="aqua"
+star.style.backgroundColor = "aqua"
+heart.style.backgroundColor = "aqua"
+circle.style.backgroundColor = "aqua"
 
-          } else if (shape === "square") {
-            square.style.backgroundColor = "blue";
-            
 
-          } else if (shape === "star") {
-            star.style.backgroundColor = "blue";
+// Set background colors based on localStorage value
+const shape = localStorage.getItem("blocks-shape");
+if (shape === "circle") {
+  circle.style.backgroundColor = "blue";
 
-          } else if (shape === "heart") {
-            heart.style.backgroundColor = "blue";
+} else if (shape === "square") {
+  square.style.backgroundColor = "blue";
+  
+} else if (shape === "star") {
+  star.style.backgroundColor = "blue";
 
-          }
-          fallingShapes()
-        }
+} else if (shape === "heart") {
+  heart.style.backgroundColor = "blue";
+
+}
+fallingShapes()
+}
 
       
 
@@ -364,10 +366,10 @@ level3.addEventListener("click", ()=>{
 
 blockNum1.addEventListener("click", ()=>{
   const level = localStorage.getItem("level")
-
   blockNum1.style.backgroundColor = "lightgreen"
   blockNum2.style.backgroundColor ="green"
   blockNum3.style.backgroundColor = "green"
+
   if(level ==="1"){
   localStorage.setItem("blocksl1", "9")
   }
@@ -382,10 +384,10 @@ blockNum1.addEventListener("click", ()=>{
 
 blockNum2.addEventListener("click", ()=>{
   const level = localStorage.getItem("level")
-
   blockNum1.style.backgroundColor = "green"
   blockNum2.style.backgroundColor ="lightgreen"
   blockNum3.style.backgroundColor = "green"
+
   if(level ==="1"){
   localStorage.setItem("blocksl1", "12")
   }
@@ -401,10 +403,10 @@ blockNum2.addEventListener("click", ()=>{
 
 blockNum3.addEventListener("click", ()=>{
   const level = localStorage.getItem("level")
-
   blockNum1.style.backgroundColor = "green"
   blockNum2.style.backgroundColor ="green"
   blockNum3.style.backgroundColor = "lightgreen"
+
   if(level ==="1"){
   localStorage.setItem("blocksl1", "16")
   }
@@ -429,9 +431,6 @@ light.addEventListener("click", ()=>{
 
 
 changeMode()
-
-
-
 
 setInterval(function () {
   fallingShapes();

@@ -126,7 +126,7 @@
 
 
 
-<!-- RESOURCES USED:
+<!-- RESOURCES USED (NOT ALL):
 
   https://www.geeksforgeeks.org/how-to-check-the-given-element-has-the-specified-class-in-javascript/
 
@@ -143,6 +143,22 @@
   https://stackoverflow.com/questions/16492401/javascript-setting-pointer-events
 
   https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_shapes_circle
+
+  https://www.w3schools.com/CHARSETS/tryit.asp?deci=9632
+
+  https://www.w3schools.com/CHARSETS/tryit.asp?deci=9679
+
+  https://www.w3schools.com/CHARSETS/tryit.asp?deci=9633
+
+  https://www.w3schools.com/CHARSETS/tryit.asp?deci=9675
+
+  https://www.w3schools.com/charsets/tryit.asp?deci=9733
+
+  https://stackoverflow.com/questions/17636310/play-audio-and-restart-it-onclick
+
+
 
   -->
   

@@ -352,7 +352,7 @@ button {
   background-color: #313131c4;
 }
 
-h3, a{
+h3, a, #b1, #b2, #b3{
   font-family: "Nerko One", cursive;
   font-weight: 400;
   font-style: normal;
@@ -509,12 +509,19 @@ body {
   }
 }
 
-h2, p{
+h2{
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 300;
   font-size:x-large;
   font-style: normal;
 }
+ #instructionText{
+  font-family: "Nerko One", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: X-large;
+ }
+
 
 .viewIns, .custombtn, .play{
   display: flex;

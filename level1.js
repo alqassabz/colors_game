@@ -1,7 +1,6 @@
 const cont = document.querySelector(".cont");
 const main = document.querySelector(".main")
 const again = document.querySelector(".againbtn")
-
 const shape = document.querySelector(".shapes li")
 let win = document.querySelector(".level-winner");
 let lose = document.querySelector(".level-loser");
@@ -24,16 +23,16 @@ let scoreVal = 0
 const life1 = document.querySelector("#life1");
 const life2 = document.querySelector("#life2");
 const life3 = document.querySelector("#life3");
-
 const loseLife = new Audio('sounds/loseLife.wav')
 
 
 
 if(localStorage.getItem("blocksl1") === null){
-localStorage.setItem("blocksl1", "16")
+  localStorage.setItem("blocksl1", "16")
 }
+
 if(localStorage.getItem("complete2") === "false"){
-localStorage.setItem("complete1", "false")
+  localStorage.setItem("complete1", "false")
 }
 
 let random = Math.floor(Math.random() * parseInt(localStorage.getItem("blocksl1")));
@@ -71,100 +70,101 @@ const makeSafeColor = (colorValue) => {
 
 const changeMode = () =>{
   let mode = localStorage.getItem("mode")
-if(mode === "dark"){
-  all.style.backgroundColor = "black"
-  timer.style.color = "black"
-  timer.style.backgroundColor = "white"
-  h1.style.color = "white"
-  navbar.style.backgroundColor = "white"
-  navbarText.forEach((text)=>{
-  text.style.color= "black"
-  life1.style.color = "white"
-  life2.style.color = "white"
-  life3.style.color = "white"
-  })
-  scoring.style.color = "white"
-}
-else if (mode === "light"){
-  all.style.backgroundColor = "#F6F5F2"
-  timer.style.color = "white"
-  timer.style.backgroundColor = "black"
-  h1.style.color = "black"
-  navbar.style.backgroundColor = "black"
-  navbarText.forEach((text)=>{
-  text.style.color= "white"
-  life1.style.color = "black"
-  life2.style.color = "black"
-  life2.style.color = "black"
-  })
-  scoring.style.color = "black"
-}
+    if(mode === "dark"){
+      all.style.backgroundColor = "black"
+      timer.style.color = "black"
+      timer.style.backgroundColor = "white"
+      h1.style.color = "white"
+      navbar.style.backgroundColor = "white"
+      navbarText.forEach((text)=>{
+      text.style.color= "black"
+      life1.style.color = "white"
+      life2.style.color = "white"
+      life3.style.color = "white"
+      })
+      scoring.style.color = "white"
+    }
+    else if (mode === "light"){
+      all.style.backgroundColor = "#F6F5F2"
+      timer.style.color = "white"
+      timer.style.backgroundColor = "black"
+      h1.style.color = "black"
+      navbar.style.backgroundColor = "black"
+      navbarText.forEach((text)=>{
+      text.style.color= "white"
+      life1.style.color = "black"
+      life2.style.color = "black"
+      life2.style.color = "black"
+      })
+      scoring.style.color = "black"
+    }
 
 }
 
 const changeBlockShape = () =>{
-const fullSquare = String.fromCharCode(9632)
-const fullCircle = String.fromCharCode(9679)
-const fullStar = String.fromCharCode(9733)
-const fullHeart = String.fromCharCode(9829)
+  const fullSquare = String.fromCharCode(9632)
+  const fullCircle = String.fromCharCode(9679)
+  const fullStar = String.fromCharCode(9733)
+  const fullHeart = String.fromCharCode(9829)
+
   if(localStorage.getItem("blocks-shape") === "circle"){
-    
     slots.forEach((slot)=>{
       slot.style.borderRadius="50px"
     })
     life1.textContent = fullCircle
     life2.textContent = fullCircle
     life3.textContent = fullCircle
-    
     }
-    else if(localStorage.getItem("blocks-shape") === "square"){
-      slots.forEach((slot)=>{
-        slot.style.borderRadius="none"
-      })
-      life1.innerText = fullSquare
-      life2.innerText = fullSquare
-      life3.innerText = fullSquare
-      }
-    else if(localStorage.getItem("blocks-shape") === "star"){
-        slots.forEach((slot)=>{
-          slot.style.clipPath = `polygon(
-            50% 0%, 
-            61% 35%, 
-            98% 35%, 
-            68% 57%, 
-            79% 91%, 
-            50% 70%, 
-            21% 91%, 
-            32% 57%, 
-            2% 35%, 
-            39% 35%
-          )`
-        })
-        life1.innerText = fullStar
-        life2.innerText = fullStar
-        life3.innerText = fullStar
-        }
-        else if(localStorage.getItem("blocks-shape") === "heart"){
-          slots.forEach((slot)=>{
-            slot.style.clipPath = `polygon(
-          50% 25%, 
-          61% 10%, 
-          75% 0%, 
-          90% 10%, 
-          100% 25%, 
-          100% 50%, 
-          50% 100%, 
-          0% 50%, 
-          0% 25%, 
-          10% 10%, 
-          25% 0%, 
-          39% 10%
-        )`
-          })
-          life1.textContent = fullHeart
-          life2.innerText = fullHeart
-          life3.innerText = fullHeart
-        }
+
+
+  else if(localStorage.getItem("blocks-shape") === "square"){
+    slots.forEach((slot)=>{
+      slot.style.borderRadius="none"
+    })
+    life1.innerText = fullSquare
+    life2.innerText = fullSquare
+    life3.innerText = fullSquare
+    }
+  else if(localStorage.getItem("blocks-shape") === "star"){
+    slots.forEach((slot)=>{
+      slot.style.clipPath = `polygon(
+        50% 0%, 
+        61% 35%, 
+        98% 35%, 
+        68% 57%, 
+        79% 91%, 
+        50% 70%, 
+        21% 91%, 
+        32% 57%, 
+        2% 35%, 
+        39% 35%
+      )`
+    })
+    life1.innerText = fullStar
+    life2.innerText = fullStar
+    life3.innerText = fullStar
+  }
+  else if(localStorage.getItem("blocks-shape") === "heart"){
+    slots.forEach((slot)=>{
+      slot.style.clipPath = `polygon(
+        50% 25%, 
+        61% 10%, 
+        75% 0%, 
+        90% 10%, 
+        100% 25%, 
+        100% 50%, 
+        50% 100%, 
+        0% 50%, 
+        0% 25%, 
+        10% 10%, 
+        25% 0%, 
+        39% 10%
+      )`
+    })
+    life1.textContent = fullHeart
+    life2.innerText = fullHeart
+    life3.innerText = fullHeart
+  }
 }
 
 const losing = () => {
@@ -176,11 +176,7 @@ const losing = () => {
   const fullStar = String.fromCharCode(9733); 
   const heart = String.fromCharCode(9825); 
   const fullHeart = String.fromCharCode(9829); 
-  
 
-  let life1 = document.querySelector("#life1");
-  let life2 = document.querySelector("#life2");
-  let life3 = document.querySelector("#life3");
 
   // Check if all lives are empty, indicating a loss
   if (life2.innerText === square || life2.innerText === circle || life2.innerText === star  || life2.innerText === heart)  {
@@ -191,27 +187,29 @@ const losing = () => {
     loseaudio.play();
     loseaudio.addEventListener('ended', () => {
       loseaudio.currentTime = 0; 
-      
     });
+
+
     if(localStorage.getItem("blocks-shape") === "square"){
-    life1.innerText = fullSquare
-    life2.innerText = fullSquare
-    life3.innerText = fullSquare
+      life1.innerText = fullSquare
+      life2.innerText = fullSquare
+      life3.innerText = fullSquare
     }
+
     if(localStorage.getItem("blocks-shape") === "circle"){
-    life1.innerText = fullCircle
-    life2.innerText = fullCircle
-    life3.innerText = fullCircle
+      life1.innerText = fullCircle
+      life2.innerText = fullCircle
+      life3.innerText = fullCircle
     }
     if(localStorage.getItem("blocks-shape") === "heart"){
-    life1.innerText = fullHeart
-    life2.innerText = fullHeart
-    life3.innerText = fullHeart
+      life1.innerText = fullHeart
+      life2.innerText = fullHeart
+      life3.innerText = fullHeart
     }
     if(localStorage.getItem("blocks-shape") === "star"){
-    life1.innerText = fullStar
-    life2.innerText = fullStar
-    life3.innerText = fullStar
+      life1.innerText = fullStar
+      life2.innerText = fullStar
+      life3.innerText = fullStar
     }
 
     lose.style.opacity = 1;
@@ -235,11 +233,7 @@ const losing = () => {
     life2.innerText = square; // Lose second life
     loseLife.currentTime = 0
     loseLife.play()
-  } else if (life1.innerText === fullSquare) {
-    life1.innerText = square; // Lose first life
-    loseLife.currentTime = 0
-    loseLife.play()
-  }
+  } 
 
   if (life1.innerText === fullStar && life2.innerText === fullStar && life3.innerText === fullStar) {
     life3.innerText = star; // Lose third life
@@ -249,11 +243,8 @@ const losing = () => {
     life2.innerText = star; // Lose second life
     loseLife.currentTime = 0
     loseLife.play()
-  } else if (life1.innerText === fullStar) {
-    life1.innerText = star; // Lose first life
-    loseLife.currentTime = 0
-    loseLife.play()
-  }
+  } 
+
 
   if (life1.innerText === fullHeart && life2.innerText === fullHeart && life3.innerText === fullHeart) {
     life3.innerText = heart; // Lose third life
@@ -263,11 +254,7 @@ const losing = () => {
     life2.innerText = heart; // Lose second life
     loseLife.currentTime = 0
     loseLife.play()
-  } else if (life1.innerText === fullHeart) {
-    life1.innerText = heart; // Lose first life
-    loseLife.currentTime = 0
-    loseLife.play()
-  }
+  } 
 
   if (life1.innerText === fullCircle && life2.innerText === fullCircle && life3.innerText === fullCircle) {
     life3.innerText = circle; // Lose third life
@@ -277,25 +264,21 @@ const losing = () => {
     life2.innerText = circle; // Lose second life
     loseLife.currentTime = 0
     loseLife.play()
-  } else if (life1.innerText === fullCircle) {
-    life1.innerText = circle; // Lose first life
-    loseLife.currentTime = 0
-    loseLife.play()
-  }
+  } 
 };
 
 
 const winning = () =>{
   const winaudios = ["win1.mp3", "win2.mp3", "win3.mp3", "win4.mp3", "win5.mp3", "win6.mp3", "win8.mp3"]
-        let rand = Math.floor(Math.random()*7)
-        const winaudio = new Audio(`sounds/${winaudios[rand]}`)
-        winaudio.play();
-        setTimeout(() =>{
-          winaudio.pause();
-      }, 2000)
-      winaudio.currentTime = 0
-    win.style.opacity = 1;
-    win.style.pointerEvents = "all";
+  let rand = Math.floor(Math.random()*7)
+  const winaudio = new Audio(`sounds/${winaudios[rand]}`)
+  winaudio.play();
+  setTimeout(() =>{
+    winaudio.pause();
+  }, 2000)
+  winaudio.currentTime = 0
+  win.style.opacity = 1;
+  win.style.pointerEvents = "all";
 }
 
 const reset = () =>{
@@ -324,8 +307,6 @@ const colorChange = () => {
   start.style.opacity = 0;
   start.style.display = "none"
   
-  
-
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);
@@ -367,9 +348,9 @@ const colorChange = () => {
     clearInterval(timerStart)
     let done = win.querySelector(".donebtn");  
     let again1 = win.querySelector(".againbtn1"); 
-      done.addEventListener("click", () => {
-        location.href="level2.html"
-      })
+    done.addEventListener("click", () => {
+      location.href="level2.html"
+    })
 
     again1.addEventListener("click", ()=>{
       reset()
@@ -382,8 +363,7 @@ const colorChange = () => {
 
 
 changeBlockShape()
-changeMode()
-
+  changeMode()
   slots.forEach((slot) => {
     slot.addEventListener("click", ()=>{
       if (slot.classList.contains("diff")){
