@@ -48,9 +48,17 @@
 
 ### ***Screenshots***
 
-##### No screenshots yet
+##### Main Page
 
 ![image](https://github.com/user-attachments/assets/6ef5fc96-9437-4edd-ae84-7ecb5d43c36a)
+
+##### Game Page
+
+![image](https://github.com/user-attachments/assets/9334b353-af6e-417a-968f-1f31ea4bdd56)
+
+##### Level 3 Page
+
+![image](https://github.com/user-attachments/assets/c29f1e4f-b987-435a-b925-bd8b515e9e87)
 
 ### ***Future Updates***
 
